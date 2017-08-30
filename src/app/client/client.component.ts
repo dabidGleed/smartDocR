@@ -14,9 +14,10 @@ export class ClientComponent implements OnInit {
   rowData = [];
   contactDetails = {};
   addRow(data) {
-    this.rowData.push({
-      
-    })
+    
+    this.rowData.push(data)
+    this.contactDetails = {};
+  
   }
   removeRow(i) {
      this.rowData.splice(i, 1);

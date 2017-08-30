@@ -45,70 +45,97 @@
 
         <div class="companyDetails">
           <h4 class="heading edit">Contact Details</h4>
-          <form #bookForm="ngForm">
-          <div class="row companyDetails">
-            <div class="col-md-6 form-group">
-              <div class="">
-                <label>First Name   </label>
-                <input class="form-control form" type="text" name="firstName" [(ngModel)]="contactDetails.firstName"  required>
-                <div class="clearfix"></div>
+          <form (ngSubmit)='addRow(contactDetails) ; contactForm.reset()' #contactForm="ngForm" novalidate>
+            <div class="row companyDetails">
+              <div class="col-md-6 form-group">
+                <div class="">
+                  <label>First Name   </label>
+                  <input class="form-control form" type="text" name="firstName" [(ngModel)]="contactDetails.firstName" #firstName="ngModel" required>
+                  <div class="clearfix"></div>
+                  <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)  "  >
+                    <div [hidden]="!firstName.errors.required">
+                      First Name is required!
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6 form-group">
-              <div class="">
-                <label>Last Name</label>
-                <input class="form-control form" type="text"  name="lastName" [(ngModel)]="contactDetails.lastName"  required>
-                <div class="clearfix"></div>
+              <div class="col-md-6 form-group">
+                <div class="">
+                  <label>Last Name</label>
+                  <input class="form-control form" type="text" name="lastName" [(ngModel)]="contactDetails.lastName" #lastName="ngModel" required>
+                  <div class="clearfix"></div>
+                  <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched)"  >
+                    <div [hidden]="!lastName.errors.required">
+                      Last Name is required!
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6 form-group">
-              <div class="">
-                <label>Phone Number</label>
-                <input class="form-control form" type="number"  name="phoneNumber" [(ngModel)]="contactDetails.phoneNumber"  required>
-                <div class="clearfix"></div>
+              <div class="col-md-6 form-group">
+                <div class="">
+                  <label>Phone Number</label>
+                  <input class="form-control form" type="number" name="phoneNumber" [(ngModel)]="contactDetails.phoneNumber" #phoneNumber="ngModel"
+                    required>
+                  <div class="clearfix"></div>
+                  
+                  <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched)"  >
+                    <div [hidden]="!phoneNumber.errors.required">
+                      Phone Number is required!
+                    </div>
+                    <!--<div [hidden]="phoneNumber.valid">
+                      Please enter valid Phone Number
+                    </div>-->
+                    
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6 form-group">
-              <div class="">
-                <label>Email ID</label>
-                <input class="form-control form" type="email"  name="email" [(ngModel)]="contactDetails.email"  required>
-                <div class="clearfix"></div>
-                {{contactDetails | json}}
+              <div class="col-md-6 form-group">
+                <div class="">
+                  <label>Email ID</label>
+                  <input class="form-control form" type="email" name="email" [(ngModel)]="contactDetails.email" #email="ngModel" required>
+                  <div class="clearfix"></div>
+                   <div *ngIf="email.errors && (email.dirty || email.touched)" >
+                    <div [hidden]="!email.errors.required">
+                      Email ID is required!
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
-            <div class="col-md-6 pull-right">
-              <p class="text-right"  ><a class="clickAdd" (click)='addRow(contactDetails)'>+</a>Click to add contact name</p>
+              
 
+              <div class="col-md-6 pull-right">
+                <p class="text-right"><button class="clickAdd" [disabled]="!contactForm.valid" type="submit" >+</button>Click to add contact name</p>
+
+              </div>
             </div>
-          </div>
           </form>
           <span *ngFor='let row of rowData ; let i = index'>
                     <div class="row companyDetails">
                         <div class="col-md-6 form-group">
                             <div class="">
                                 <label>First Name </label>
-                                <input class="form-control form" type="text">
+                                <input class="form-control form" type="text" name="firstName" [(ngModel)]="row.firstName"  required>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                         <div class="col-md-6 form-group">
                             <div class="">
                                 <label>Last Name</label>
-                                <input class="form-control form" type="text">
+                               <input class="form-control form" type="text"  name="lastName" [(ngModel)]="row.lastName"  required>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                         <div class="col-md-6 form-group">
                             <div class="">
                                 <label>Phone Number</label>
-                                <input class="form-control form" type="text">
+                               <input class="form-control form" type="number"  name="phoneNumber" [(ngModel)]="row.phoneNumber"  required>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                         <div class="col-md-6 form-group">
                             <div class="">
                                 <label>Email ID</label>
-                                <input class="form-control form" type="text">
+                                 <input class="form-control form" type="email"  name="email" [(ngModel)]="row.email"  required>
                                 <div class="clearfix"></div>
                             </div>
                         </div>
