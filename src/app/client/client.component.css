@@ -1,0 +1,12 @@
+.form-group {
+    position: relative;
+    /*margin-bottom: 20px;*/
+}
+
+.error {
+    position: absolute;
+    right: 16px;
+    top: 0;
+    color: red;
+    /*bottom: -20px;*/
+}

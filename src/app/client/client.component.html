@@ -45,39 +45,88 @@
                 <div class="companyDetails">
                     <h4 class="heading edit">Contact Details</h4>
                     <div class="row companyDetails">
+                        <form #f="ngForm" (ngSubmit)="addUser(myModel); f.reset()" novalidate>
+                            <div class="col-md-6 form-group">
+                                <div class="">
+                                    <label>First Name</label>
+                                    <input class="form-control form" type="text" name="firstName" [(ngModel)]="myModel.firstName" #firstName="ngModel" required>
+                                    <div class="clearfix"></div>
+                                    <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched)" class="error">
+                                        <div [hidden]="!firstName.errors.required">
+                                            First Name is required!
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <div class="">
+                                    <label>Last Name</label>
+                                    <input class="form-control form" type="text" name="lastName" [(ngModel)]="myModel.lastName" #lastName="ngModel" required>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <div class="">
+                                    <label>Phone Number</label>
+                                    <input class="form-control form" type="text" name="phoneNumber" [(ngModel)]="myModel.phoneNumber" #phoneNumber="ngModel" required>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 form-group">
+                                <div class="">
+                                    <label>Email ID</label>
+                                    <input class="form-control form" type="text" name="email" [(ngModel)]="myModel.email" #email="ngModel" required>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6 pull-right">
+                                <p class="text-right"><button class="clickAdd" [disabled]="!f.valid" type="submit">+</button>Click to add contact name</p>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <div class="companyDetails">
+                    <!--<h4 class="heading edit">Contact Details</h4>-->
+                    <div class="row companyDetails" *ngFor="let remForm of remGroup; let i=index">
                         <div class="col-md-6 form-group">
                             <div class="">
                                 <label>First Name</label>
-                                <input class="form-control form" type="text">
+                                <input class="form-control form" type="text" name="firstName" [(ngModel)]="remForm.firstName">
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                         <div class="col-md-6 form-group">
                             <div class="">
                                 <label>Last Name</label>
-                                <input class="form-control form" type="text">
+                                <input class="form-control form" type="text" name="lastName" [(ngModel)]="remForm.lastName">
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                         <div class="col-md-6 form-group">
                             <div class="">
                                 <label>Phone Number</label>
-                                <input class="form-control form" type="text">
+                                <input class="form-control form" type="text" name="phoneNumber" [(ngModel)]="remForm.phoneNumber">
                                 <div class="clearfix"></div>
                             </div>
                         </div>
                         <div class="col-md-6 form-group">
                             <div class="">
                                 <label>Email ID</label>
-                                <input class="form-control form" type="text">
+                                <input class="form-control form" type="text" name="email" [(ngModel)]="remForm.email">
                                 <div class="clearfix"></div>
                             </div>
                         </div>
+                        <!--<div class="row">-->
                         <div class="col-md-6 pull-right">
-                            <p class="text-right"><a class="clickAdd" href="#">+</a>Click to add contact name</p>
+                            <p class="text-right"><a class="clickAdd" (click)="removeUser(i)">-</a>Click to Remove contact name</p>
                         </div>
+                        <!--</div>-->
                     </div>
+
                 </div>
+
+
                 <div class="companyDetails">
                     <h4 class="heading edit">Pricing Terms</h4>
                     <div class="row companyDetails">
