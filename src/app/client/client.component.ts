@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-
+import {
+  Component,
+  OnInit
+} from '@angular/core';
 
 @Component({
   selector: 'app-client',
@@ -7,23 +9,20 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./client.component.css']
 })
 export class ClientComponent implements OnInit {
+
+  constructor() {}
+  rowData = [];
+  contactDetails = {};
+  addRow(data) {
+    
+    this.rowData.push(data)
+    this.contactDetails = {};
   
-  constructor() { }
-  remGroup=[
-  ];
-  myModel={}
-  removeUser(i){
-    this.remGroup.splice(i, 1)
   }
-    addUser(data){
-      this.remGroup.push(data);
-      this.myModel={}
-      // console.log("iiii");
-      // console.log(this.remGroup);
-
-    }
-    onSubmit(ngForm) {}
-
-  ngOnInit() {
+  removeRow(i) {
+     this.rowData.splice(i, 1);
+    
   }
+  ngOnInit() {}
+
 }
