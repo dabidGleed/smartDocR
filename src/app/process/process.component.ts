@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-process',
   templateUrl: './process.component.html',
   styleUrls: ['./process.component.css']
 })
+
 export class ProcessComponent implements OnInit {
    hours:any=[];
    mins:any=[];
@@ -16,6 +17,13 @@ export class ProcessComponent implements OnInit {
       this.mins.push(i);   
     }
    }
+   processData =[];
+    addProcess = {};
+ 
+    submitProcess(addProcessFrom: NgForm){
+      this.processData.push({processName:addProcessFrom.value.processName,turnStartTime:addProcessFrom.value.turnStartTime,turnEndTime:addProcessFrom.value.turnEndTime,remarks:addProcessFrom.value.remarks});
+      addProcessFrom.resetForm();
+    }
 
   ngOnInit() {
   }

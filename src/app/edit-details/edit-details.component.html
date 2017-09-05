@@ -87,25 +87,46 @@
                     </div>
                 </div>-->
                 <div class="row companyDetails">
+                    <form #editDetailsForm="ngForm"  (ngSubmit)=' editDetailsForm.valid &&  submitProcess(editDetailsForm); ' novalidate>
                     <div class="col-md-4">
                         <div class="formGroup">
                             <label>Status</label>
-                            <input class="form-control" type="text">
+                            <input class="form-control" type="text" name="status" [(ngModel)]="editDetails.status" #status="ngModel" required>
+                            <div *ngIf="status.errors && (status.dirty || status.touched || editDetailsForm.submitted)  "  >
+                                    <div [hidden]="!status.errors.required">
+                                    Status is required!
+                                    </div>
+                                </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="formGroup">
                             <label>Emp ID</label>
-                            <input class="form-control" type="text">
+                            <input class="form-control" type="text"  name="employeeId" [(ngModel)]="editDetails.employeeId" #employeeId="ngModel" required>
+                            <div *ngIf="employeeId.errors && (employeeId.dirty || employeeId.touched || editDetailsForm.submitted)  "  >
+                                    <div [hidden]="!employeeId.errors.required">
+                                    Employee Id is required!
+                                    </div>
+                                </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="formGroup">
                             <label>User ID</label>
-                            <input class="form-control" type="text">
+                            <input class="form-control" type="text"  name="userId" [(ngModel)]="editDetails.userId" #userId="ngModel" required>
+                            <div *ngIf="userId.errors && (userId.dirty || userId.touched || editDetailsForm.submitted)  "  >
+                                    <div [hidden]="!userId.errors.required">
+                                    User Id is required!
+                                    </div>
+                                </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="formGroup">
                             <label>First Name</label>
-                            <input class="form-control" type="text">
+                            <input class="form-control" type="text"  name="firstName" [(ngModel)]="editDetails.firstName" #firstName="ngModel" required>
+                            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || editDetailsForm.submitted)  "  >
+                                    <div [hidden]="!firstName.errors.required">
+                                    First Name is required!
+                                    </div>
+                                </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="clearfix"></div>
@@ -113,28 +134,45 @@
                     <div class="col-md-4">
                         <div class="formGroup">
                             <label>Email ID</label>
-                            <input class="form-control" type="text">
+                            <input class="form-control" type="email"  name="emailId" [(ngModel)]="editDetails.emailId" #emailId="ngModel" required>
+                            <div *ngIf="emailId.errors && (emailId.dirty || emailId.touched || editDetailsForm.submitted)  "  >
+                                    <div [hidden]="!emailId.errors.required">
+                                    Email Id is required!
+                                    </div>
+                                </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="formGroup">
                             <label>Office Location</label>
-                            <select class="form-control"> 
-                       <option selected>states</option>
+                            <select class="form-control"  name="officeLocation" [(ngModel)]="editDetails.officeLocation" #officeLocation="ngModel" required> 
+                       <option selected value="">states</option>
                        <option *ngFor = "let state of states">{{state.name}}</option>
                    </select>
+                   <div *ngIf="officeLocation.errors && (officeLocation.dirty || officeLocation.touched || editDetailsForm.submitted)  "  >
+                                    <div [hidden]="!officeLocation.errors.required">
+                                    Office Location is required!
+                                    </div>
+                                </div>
+
                             <div class="clearfix"></div>
                         </div>
                         <div class="formGroup">
                             <label>Last Name</label>
-                            <input class="form-control" type="text">
+                            <input class="form-control" type="text" name="lastName" [(ngModel)]="editDetails.lastName" #lastName="ngModel" required>
+                             <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || editDetailsForm.submitted)  "  >
+                                    <div [hidden]="!lastName.errors.required">
+                                    Last Name is required!
+                                    </div>
+                                </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="formGroup button-group pull-right">
                             <a class="button btn-gry buttonEdit" href="javascript:void()">permissions</a>
-                            <a class="button btn-blue buttonEdit" href="javascript:void()">Save</a>
+                            <button class="button btn-blue buttonEdit" type="submit">Save</button>
                             <div class="clearfix"></div>
                         </div>
                     </div>
+                    </form>
                 </div>
             </div>
             <div class="clearfix"></div>

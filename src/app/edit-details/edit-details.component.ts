@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-
+import { NgForm } from '@angular/forms';
 @Component({
   selector: 'app-edit-details',
   templateUrl: './edit-details.component.html',
@@ -62,9 +62,13 @@ states:any[];
           {"name":"Wyoming","alpha-2":"WY"}
   ];
    }
-
+ editDetails ={};
   ngOnInit() {
     
   }
+submitProcess(editDetailsForm: NgForm){
+        console.log(editDetailsForm.value)
+      editDetailsForm.resetForm();
+    }
 
 }
