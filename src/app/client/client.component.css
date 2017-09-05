@@ -1,0 +1,30 @@
+.form-group , .cityForm{
+    position: relative;
+    /*margin-bottom: 20px;*/
+}
+.form-group.cityPosition{
+    position: inherit;
+}
+.companyDetails .formTextArea.companyText {
+   width: 70%;
+}
+.error {
+    /*position: absolute;
+    right: 16px;
+    top: 0;
+    /*bottom: -20px;*/
+    position: absolute;
+    bottom: -7px;
+    right: 22px;
+    background: #fff;
+    padding: 0 5px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 12px;
+    color: red;
+    /*z-index: 999;*/
+}
+
+input[type=number] {
+    -moz-appearance: textfield;
+}

@@ -12,7 +12,7 @@
                     <label>Process Name </label>
                     <input class="form-control form" type="text" name="processName" [(ngModel)]="addProcess.processName" #processName="ngModel" required>
                     <div class="clearfix"></div>
-                    <div *ngIf="processName.errors && (processName.dirty || processName.touched || addProcessFrom.submitted)  "  >
+                    <div *ngIf="processName.errors && (processName.dirty || processName.touched || addProcessFrom.submitted)  " class="error" >
                     <div [hidden]="!processName.errors.required">
                       Process Name is required!
                     </div>
@@ -24,7 +24,7 @@
                     <option selected value="">HH</option>
                     <option *ngFor = "let hour of hours">{{hour}}</option>
                     </select>
-                   <div *ngIf="turnStartTime.errors && (turnStartTime.dirty || turnStartTime.touched || addProcessFrom.submitted)   "  >
+                   <div *ngIf="turnStartTime.errors && (turnStartTime.dirty || turnStartTime.touched || addProcessFrom.submitted)   "  class="error">
                     <div [hidden]="!turnStartTime.errors.required">
                       Turn Start Time is required!
                     </div>
@@ -34,7 +34,7 @@
                     <option selected value="">MM</option>
                     <option *ngFor = "let min of mins">{{min}}</option>
                     </select>
-                    <div *ngIf="turnEndTime.errors && (turnEndTime.dirty || turnEndTime.touched || addProcessFrom.submitted)  "  >
+                    <div *ngIf="turnEndTime.errors && (turnEndTime.dirty || turnEndTime.touched || addProcessFrom.submitted)  " class="error" >
                     <div [hidden]="!turnEndTime.errors.required">
                       Turn End Time is required!
                     </div>
@@ -47,7 +47,7 @@
                 <div class="col-md-12 form-group">
                     <label>Remarks</label>
                     <textarea class="form-control formTextArea" cols="100" name="remarks" [(ngModel)]="addProcess.remarks" #remarks="ngModel" required></textarea>
-                <div *ngIf="remarks.errors && (remarks.dirty || remarks.touched || addProcessFrom.submitted)  "  >
+                <div *ngIf="remarks.errors && (remarks.dirty || remarks.touched || addProcessFrom.submitted)  " class="error" >
                     <div [hidden]="!remarks.errors.required">
                       Remarks is required!
                     </div>

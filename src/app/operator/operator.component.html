@@ -36,7 +36,7 @@
                             <div class="form-group">
                                 <label for="">Emp Id</label>
                                 <input class="form-control" type="text" name="employeeId" [(ngModel)]="addOperator.employeeId" #employeeId="ngModel" required>
-                                <div *ngIf="employeeId.errors && (employeeId.dirty || employeeId.touched || operatorForm.submitted)  "  >
+                                <div *ngIf="employeeId.errors && (employeeId.dirty || employeeId.touched || operatorForm.submitted)  " class="error"  >
                                     <div [hidden]="!employeeId.errors.required">
                                     Employee Id is required!
                                     </div>
@@ -48,7 +48,7 @@
                             <div class="form-group">
                                 <label for="">Email Id</label>
                                 <input class="form-control" type="email" name="emailId" [(ngModel)]="addOperator.emailId" #emailId="ngModel" required>
-                                <div *ngIf="emailId.errors && (emailId.dirty || emailId.touched || operatorForm.submitted)  "  >
+                                <div *ngIf="emailId.errors && (emailId.dirty || emailId.touched || operatorForm.submitted)  " class="error" >
                                     <div [hidden]="!emailId.errors.required">
                                     Email Id is required!
                                     </div>
@@ -60,7 +60,7 @@
                             <div class="form-group">
                                 <label for="">User Id</label>
                                 <input class="form-control" type="text" name="userId" [(ngModel)]="addOperator.userId" #userId="ngModel" required>
-                                <div *ngIf="userId.errors && (userId.dirty || userId.touched || operatorForm.submitted)  "  >
+                                <div *ngIf="userId.errors && (userId.dirty || userId.touched || operatorForm.submitted)  " class="error" >
                                     <div [hidden]="!userId.errors.required">
                                     User Id is required!
                                     </div>
@@ -72,7 +72,7 @@
                             <div class="form-group">
                                 <label for="">Office Location</label>
                                 <input class="form-control" type="text" name="officeLocation" [(ngModel)]="addOperator.officeLocation" #officeLocation="ngModel" required>
-                                <div *ngIf="officeLocation.errors && (officeLocation.dirty || officeLocation.touched || operatorForm.submitted)  "  >
+                                <div *ngIf="officeLocation.errors && (officeLocation.dirty || officeLocation.touched || operatorForm.submitted)  "  class="error">
                                     <div [hidden]="!officeLocation.errors.required">
                                     Office Location is required!
                                     </div>
@@ -84,7 +84,7 @@
                             <div class="form-group">
                                 <label for="">First Name</label>
                                 <input class="form-control" type="text" name="firstName" [(ngModel)]="addOperator.firstName" #firstName="ngModel" required>
-                                <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || operatorForm.submitted)  "  >
+                                <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || operatorForm.submitted)  " class="error" >
                                     <div [hidden]="!firstName.errors.required">
                                     First Name is required!
                                     </div>
@@ -96,7 +96,7 @@
                             <div class="form-group">
                                 <label for="">Last Name</label>
                                 <input class="form-control" type="text" name="lastName" [(ngModel)]="addOperator.lastName" #lastName="ngModel" required>
-                                <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || operatorForm.submitted)  "  >
+                                <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || operatorForm.submitted)  "  class="error">
                                     <div [hidden]="!lastName.errors.required">
                                    Last Name is required!
                                     </div>

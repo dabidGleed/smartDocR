@@ -21,7 +21,7 @@
                 <label>Name</label>
                
                 <input class="form-control form" type="text" name="companyName" [(ngModel)]="company.companyName" #companyName="ngModel" required>
-                                 <div *ngIf="companyName.errors && (companyName.dirty || companyName.touched || contactForm.submitted)  "  >
+                                 <div *ngIf="companyName.errors && (companyName.dirty || companyName.touched || contactForm.submitted)  " class="error" >
                                     <div [hidden]="!companyName.errors.required">
                                       Company Name is required!
                                     </div>
@@ -32,7 +32,7 @@
             <div class="col-md-6 form-group">
               <label>State</label>
               <input class="form-control form" type="text" name="companyState" [(ngModel)]="company.companyState" #companyState="ngModel" required>
-                                 <div *ngIf="companyState.errors && (companyState.dirty || companyState.touched || contactForm.submitted)  "  >
+                                 <div *ngIf="companyState.errors && (companyState.dirty || companyState.touched || contactForm.submitted)  " class="error" >
                                     <div [hidden]="!companyState.errors.required">
                                       State is required!
                                     </div>
@@ -41,29 +41,33 @@
             </div>
             <div class="col-md-6 form-group">
               <label>Adress</label>
-              <textarea class="form-control formTextArea" cols="50" name="companyAddress" [(ngModel)]="company.companyAddress" #companyAddress="ngModel" required ></textarea>
-              <div *ngIf="companyAddress.errors && (companyAddress.dirty || companyAddress.touched || contactForm.submitted)  "  >
+              <textarea class="form-control formTextArea companyText" cols="50" name="companyAddress" [(ngModel)]="company.companyAddress" #companyAddress="ngModel" required ></textarea>
+              <div *ngIf="companyAddress.errors && (companyAddress.dirty || companyAddress.touched || contactForm.submitted)  " class="error" >
                                     <div [hidden]="!companyAddress.errors.required">
                                       Address is required!
                                     </div>
                                   </div>
               <div class="clearfix"></div>
             </div>
-            <div class="col-md-6 form-group">
+            <div class="col-md-6 form-group cityPosition">
+              <div class="cityForm">
               <label class="formLabel">City</label>
               <input class="form-control formSmall" type="text" name="companyCity" [(ngModel)]="company.companyCity" #companyCity="ngModel" required>
-              <div *ngIf="companyCity.errors && (companyCity.dirty || companyCity.touched || contactForm.submitted)  "  >
+              <div *ngIf="companyCity.errors && (companyCity.dirty || companyCity.touched || contactForm.submitted)  "  class="error">
                                     <div [hidden]="!companyCity.errors.required">
                                       City is required!
                                     </div>
                                   </div>
+              </div>
+              <div class="cityForm">
               <label class="labelSmall">Zip</label>
               <input class="form-control formSmall" type="text" name="companyZipCode" [(ngModel)]="company.companyZipCode" #companyZipCode="ngModel" required>
-              <div *ngIf="companyZipCode.errors && (companyZipCode.dirty || companyZipCode.touched || contactForm.submitted)  "  >
+              <div *ngIf="companyZipCode.errors && (companyZipCode.dirty || companyZipCode.touched || contactForm.submitted)  " class="error" >
                                     <div [hidden]="!companyZipCode.errors.required">
                                       Zipcode is required!
                                     </div>
                                   </div>
+              </div>
               <div class="clearfix"></div>
             </div>
             <div class="clearfix"></div>
@@ -120,7 +124,7 @@
                             <div class="">
                                 <label>First Name </label>
                                 <input class="form-control form" type="text" name="firstName{{i}}" [(ngModel)]="row.firstName" #firstName="ngModel" required>
-                                 <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || contactForm.submitted)  "  >
+                                 <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || contactForm.submitted)  "class="error"  >
                                     <div [hidden]="!firstName.errors.required">
                                       First Name is required!
                                     </div>
@@ -132,7 +136,7 @@
                             <div class="">
                                 <label>Last Name</label>
                                <input class="form-control form" type="text"  name="lastName{{i}}" [(ngModel)]="row.lastName"  #lastName="ngModel" required >
-                               <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || contactForm.submitted)  "  >
+                               <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || contactForm.submitted)  "  class="error">
                                     <div [hidden]="!lastName.errors.required">
                                      Last Name is required!
                                     </div>
@@ -144,7 +148,7 @@
                             <div class="">
                                 <label>Phone Number</label>
                                <input class="form-control form" type="number"  name="phoneNumber{{i}}" [(ngModel)]="row.phoneNumber" #phoneNumber="ngModel" required >
-                               <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched || contactForm.submitted)  "  >
+                               <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched || contactForm.submitted)  " class="error" >
                                     <div [hidden]="!phoneNumber.errors.required">
                                       Phone Number is required!
                                     </div>
@@ -156,7 +160,7 @@
                             <div class="">
                                 <label>Email ID</label>
                                  <input class="form-control form" type="email"  name="email{{i}}" [(ngModel)]="row.email"  #email="ngModel" required >
-                                 <div *ngIf="email.errors && (email.dirty || email.touched || contactForm.submitted)  "  >
+                                 <div *ngIf="email.errors && (email.dirty || email.touched || contactForm.submitted)  "  class="error">
                                     <div [hidden]="!email.errors.required">
                                       Email is required!
                                     </div>
@@ -180,7 +184,7 @@
               <div class="">
                 <label>Contract Date</label>
                 <input class="form-control form" type="text" name="companyContractDate" [(ngModel)]="company.companyContractDate" #companyContractDate="ngModel" required>
-                <div *ngIf="companyContractDate.errors && (companyContractDate.dirty || companyContractDate.touched || contactForm.submitted)  "  >
+                <div *ngIf="companyContractDate.errors && (companyContractDate.dirty || companyContractDate.touched || contactForm.submitted)  "  class="error">
                                     <div [hidden]="!companyContractDate.errors.required">
                                       Contract Date is required!
                                     </div>
@@ -192,7 +196,7 @@
               <div class="">
                 <label>Products Selected</label>
                 <input class="form-control form" type="text" name="companyProductSelected" [(ngModel)]="company.companyProductSelected" #companyProductSelected="ngModel" required>
-                <div *ngIf="companyProductSelected.errors && (companyProductSelected.dirty || companyProductSelected.touched || contactForm.submitted)  "  >
+                <div *ngIf="companyProductSelected.errors && (companyProductSelected.dirty || companyProductSelected.touched || contactForm.submitted)  "  class="error">
                                     <div [hidden]="!companyProductSelected.errors.required">
                                      Product Selected is required!
                                     </div>
