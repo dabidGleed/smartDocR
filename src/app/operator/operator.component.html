@@ -16,71 +16,106 @@
                     </ul>
                 </div>
                 <div class="customProcess">
-                    <div class="col-md-6 from-group">
-                        <label for="">Turn Time</label>
-                        <span class="check-form">
+                    <form #operatorForm="ngForm" (ngSubmit)=' operatorForm.valid &&  submitProcess(operatorForm); ' novalidate>
+                        <div class="col-md-6 from-group companyDetails">
+                            <label for="">Turn Time</label>
+                            <!--<span class="check-form">
                   <input id="checkBox" type="checkbox">
-                  <!-- <label  for="">companyDetails</label> -->
                   <span class="actLabel">Active</span>
                         </span>
                         <span class="check-form">
                   <input id="checkBox" type="checkbox">
-                  <!-- <label class="actLabel" for="">In Active</label> -->
                   <span class="actLabel">In Active</span>
-                        </span>
-                    </div>
-                    <div class="clearfix"></div>
-                    <div class="companyDetails">
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">Emp Id</label>
-                                <input class="form-control" type="text">
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">Email Id</label>
-                                <input class="form-control" type="text">
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">User Id</label>
-                                <input class="form-control" type="text">
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">Office Location</label>
-                                <input class="form-control" type="text">
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">First Name</label>
-                                <input class="form-control" type="text">
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-4">
-                            <div class="form-group">
-                                <label for="">Last Name</label>
-                                <input class="form-control" type="text">
-                                <div class="clearfix"></div>
-                            </div>
+                        </span>-->
+                            <label class="switch">
+                            <input type="checkbox">
+                            <span class="slider round"></span>
+                        </label>
+                            <span class="toggleActive">Active</span>
                         </div>
                         <div class="clearfix"></div>
-                    </div>
-                    <div class="col-md-2 button-group pull-right">
-                        <!-- <a class="button btn-gry buttonEdit"href="javascript:void()">Edit</a> -->
-                        <a class="button btn-blue buttonEdit pull-right" href="javascript:void()">Save</a>
+                        <div class="companyDetails">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Emp Id</label>
+                                    <input class="form-control" type="text" name="employeeId" [(ngModel)]="addOperator.employeeId" #employeeId="ngModel" required>
+                                    <div *ngIf="employeeId.errors && (employeeId.dirty || employeeId.touched || operatorForm.submitted)  " class="error">
+                                        <div [hidden]="!employeeId.errors.required">
+                                            Employee Id is required!
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Email Id</label>
+                                    <input class="form-control" type="email" name="emailId" [(ngModel)]="addOperator.emailId" #emailId="ngModel" required>
+                                    <div *ngIf="emailId.errors && (emailId.dirty || emailId.touched || operatorForm.submitted)  " class="error">
+                                        <div [hidden]="!emailId.errors.required">
+                                            Email Id is required!
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">User Id</label>
+                                    <input class="form-control" type="text" name="userId" [(ngModel)]="addOperator.userId" #userId="ngModel" required>
+                                    <div *ngIf="userId.errors && (userId.dirty || userId.touched || operatorForm.submitted)  " class="error">
+                                        <div [hidden]="!userId.errors.required">
+                                            User Id is required!
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Office Location</label>
+                                    <input class="form-control" type="text" name="officeLocation" [(ngModel)]="addOperator.officeLocation" #officeLocation="ngModel" required>
+                                    <div *ngIf="officeLocation.errors && (officeLocation.dirty || officeLocation.touched || operatorForm.submitted)  " class="error">
+                                        <div [hidden]="!officeLocation.errors.required">
+                                            Office Location is required!
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">First Name</label>
+                                    <input class="form-control" type="text" name="firstName" [(ngModel)]="addOperator.firstName" #firstName="ngModel" required>
+                                    <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || operatorForm.submitted)  " class="error">
+                                        <div [hidden]="!firstName.errors.required">
+                                            First Name is required!
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="">Last Name</label>
+                                    <input class="form-control" type="text" name="lastName" [(ngModel)]="addOperator.lastName" #lastName="ngModel" required>
+                                    <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || operatorForm.submitted)  " class="error">
+                                        <div [hidden]="!lastName.errors.required">
+                                            Last Name is required!
+                                        </div>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                        <div class="col-md-2 button-group pull-right">
+                            <!-- <a class="button btn-gry buttonEdit"href="javascript:void()">Edit</a> -->
+                            <button class="button btn-blue buttonEdit pull-right" type="submit">Save</button>
+                            <div class="clearfix"></div>
+                        </div>
                         <div class="clearfix"></div>
-                    </div>
-                    <div class="clearfix"></div>
+                    </form>
                 </div>
                 <div class="clearfix"></div>
             </div>
