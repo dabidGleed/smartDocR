@@ -85,7 +85,7 @@ export class ClientComponent implements OnInit {
   }
   removeRow(i) {
     this.rowData.splice(i, 1);
-
+ 
   }
   submitProcess(contactForm: NgForm){
     console.log(contactForm.value);
