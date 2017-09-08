@@ -7,18 +7,34 @@
         <div class="col-md-9 col-md-offset-1 text-center">
             <div class="contentRight">
                 <div class="defaultNav">
-                    <ul>
-                        <li><a class="btn-tabs btn-blue btn-gray btn-space" href="javascript:void()">Operator</a></li>
-                        <li>
-                            <a class="btn-tabs btn-blue btn-gray btn-space" href="javascript:void()">Manager</a></li>
-                        <li><a class="btn-tabs btn-blue btn-gray btn-space" href="javascript:void()">Admin</a></li>
-                        <li><a class="btn-tabs btn-blue btn-gray btn-space" href="javascript:void()">User</a></li>
+                    <ul> 
+                        <li><button class="btn-tabs btn-blue btn-gray btn-space " [ngClass]="{'btnActive': roles.operator == true}" (click)="roles.operator = !roles.operator">Operator</button></li>
+                        <li><button class="btn-tabs btn-blue btn-gray btn-space" [ngClass]="{'btnActive': roles.manager == true}" (click)="roles.manager = !roles.manager">Manager</button></li>
+                        <li><button class="btn-tabs btn-blue btn-gray btn-space" [ngClass]="{'btnActive': roles.admin == true}" (click)="roles.admin = !roles.admin">Admin</button></li>
+                        <li><button class="btn-tabs btn-blue btn-gray btn-space" [ngClass]="{'btnActive': roles.user == true}" (click)="roles.user = !roles.user">User</button></li>
                     </ul>
-                </div>
+                </div> 
                 <div class="customProcess">
-                    <form #operatorForm="ngForm" (ngSubmit)=' operatorForm.valid &&  submitProcess(operatorForm); ' novalidate>
-                        <div class="col-md-6 from-group companyDetails">
-                            <label for="">Turn Time</label>
+                    <form #operatorForm="ngForm" (keydown.enter)="$event.preventDefault()" (ngSubmit)=' operatorForm.valid && (roles.operator || roles.manager || roles.admin || roles.user ) && submitProcess(operatorForm); ' novalidate>
+                        
+                        
+                        <div class="col-md-10 from-group companyDetails" [hidden]="!operatorForm.submitted "><label for="" *ngIf="!(roles.operator || roles.manager || roles.admin || roles.user )">Select role</label> </div>
+                        <div class="col-md-4 from-group companyDetails">
+                            <label for="">Client</label>  
+                          
+                              <select class="form-control " name="client" [(ngModel)]="addOperator.client" #client="ngModel" required>
+                                    <option  value=""   >Select</option>
+                                     <option *ngFor="let client of clientData" [value]="client.id">{{client.name}}</option>
+                                </select>
+                  
+                          <div *ngIf="client.errors && (client.dirty || client.touched || operatorForm.submitted)  " class="error">
+                                        <div [hidden]="!client.errors.required">
+                                            Client is required!
+                                        </div>
+                                    </div>
+                        </div>
+                        <div class="col-md-4 from-group companyDetails">
+                            <label for="">Status</label>
                             <!--<span class="check-form">
                   <input id="checkBox" type="checkbox">
                   <span class="actLabel">Active</span>
@@ -28,18 +44,18 @@
                   <span class="actLabel">In Active</span>
                         </span>-->
                             <label class="switch">
-                            <input type="checkbox">
+                            <input type="checkbox" name="status"  [(ngModel)]="addOperator.status" #status="ngModel" >
                             <span class="slider round"></span>
                         </label>
-                            <span class="toggleActive">Active</span>
+                            <!--<span class="toggleActive">Active</span>-->
                         </div>
                         <div class="clearfix"></div>
                         <div class="companyDetails">
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Emp Id</label>
-                                    <input class="form-control" type="text" name="employeeId" [(ngModel)]="addOperator.employeeId" #employeeId="ngModel" required>
-                                    <div *ngIf="employeeId.errors && (employeeId.dirty || employeeId.touched || operatorForm.submitted)  " class="error">
+                                    <input class="form-control" type="text"    name="employeeId"  [(ngModel)]="addOperator.employeeId" #employeeId="ngModel"  required>
+                                    <div *ngIf="employeeId.errors && (employeeId.dirty || employeeId.touched || operatorForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!employeeId.errors.required">
                                             Employee Id is required!
                                         </div>
@@ -50,11 +66,15 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Email Id</label>
-                                    <input class="form-control" type="email" name="emailId" [(ngModel)]="addOperator.emailId" #emailId="ngModel" required>
-                                    <div *ngIf="emailId.errors && (emailId.dirty || emailId.touched || operatorForm.submitted)  " class="error">
+                                    <input class="form-control" type="email" name="emailId" (keyup.enter)="addUserId(addOperator)"     [(ngModel)]="addOperator.emailId" #emailId="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                                    <div *ngIf="emailId.errors && (emailId.dirty || emailId.touched || operatorForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!emailId.errors.required">
-                                            Email Id is required!
+                                            Email is required!
                                         </div>
+                                        <div  *ngIf="emailId.errors && emailId.errors.pattern">
+                                            Email is invalid!
+                                        </div>
+
                                     </div>
                                     <div class="clearfix"></div>
                                 </div>
@@ -63,7 +83,7 @@
                                 <div class="form-group">
                                     <label for="">User Id</label>
                                     <input class="form-control" type="text" name="userId" [(ngModel)]="addOperator.userId" #userId="ngModel" required>
-                                    <div *ngIf="userId.errors && (userId.dirty || userId.touched || operatorForm.submitted)  " class="error">
+                                    <div *ngIf="userId.errors && (userId.dirty || userId.touched || operatorForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!userId.errors.required">
                                             User Id is required!
                                         </div>
@@ -75,7 +95,7 @@
                                 <div class="form-group">
                                     <label for="">Office Location</label>
                                     <input class="form-control" type="text" name="officeLocation" [(ngModel)]="addOperator.officeLocation" #officeLocation="ngModel" required>
-                                    <div *ngIf="officeLocation.errors && (officeLocation.dirty || officeLocation.touched || operatorForm.submitted)  " class="error">
+                                    <div *ngIf="officeLocation.errors && (officeLocation.dirty || officeLocation.touched || operatorForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!officeLocation.errors.required">
                                             Office Location is required!
                                         </div>
@@ -87,7 +107,7 @@
                                 <div class="form-group">
                                     <label for="">First Name</label>
                                     <input class="form-control" type="text" name="firstName" [(ngModel)]="addOperator.firstName" #firstName="ngModel" required>
-                                    <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || operatorForm.submitted)  " class="error">
+                                    <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || operatorForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!firstName.errors.required">
                                             First Name is required!
                                         </div>
@@ -99,7 +119,7 @@
                                 <div class="form-group">
                                     <label for="">Last Name</label>
                                     <input class="form-control" type="text" name="lastName" [(ngModel)]="addOperator.lastName" #lastName="ngModel" required>
-                                    <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || operatorForm.submitted)  " class="error">
+                                    <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || operatorForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!lastName.errors.required">
                                             Last Name is required!
                                         </div>
@@ -109,6 +129,7 @@
                             </div>
                             <div class="clearfix"></div>
                         </div>
+                        
                         <div class="col-md-2 button-group pull-right">
                             <!-- <a class="button btn-gry buttonEdit"href="javascript:void()">Edit</a> -->
                             <button class="button btn-blue buttonEdit pull-right" type="submit">Save</button>

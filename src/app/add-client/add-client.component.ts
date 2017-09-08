@@ -87,7 +87,10 @@ export class AddClientComponent implements OnInit {
     { name: 'WISCONSIN', abbreviation: 'WI' },
     { name: 'WYOMING', abbreviation: 'WY' }
   ];
-  company = {};
+  company = {
+    companyState:"",
+    companyProductSelected:""
+  };
   client = {};
   addRow(data) {
     this.rowData.push({ firstName: data.firstName, lastName: data.lastName, phoneNumber: data.phoneNumber, email: data.lastName });
