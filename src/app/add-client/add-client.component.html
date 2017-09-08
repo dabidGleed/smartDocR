@@ -216,7 +216,7 @@
                             <input class="form-control form" type="text"
                             [minDate]="minDate"
                             [maxDate]="maxDate"
-                            name="companyContractDate" [(ngModel)]="company.companyContractDate" #companyContractDate="ngModel" 
+                            name="companyContractDate" [(ngModel)]="company.companyContractDate" #companyContractDate="ngModel"
                             required bsDatepicker>
                             <div *ngIf="companyContractDate.errors && (companyContractDate.dirty || companyContractDate.touched || contactForm.submitted)  " class="error">
                                 <div [hidden]="!companyContractDate.errors.required">
@@ -244,9 +244,11 @@
                             <div class="clearfix"></div>
                         </div>
                     </div>
-                    <div class="col-md-3 col-md-offset-2 form-group">
-                        <label for="files" class="btn">Upload Contract</label>
-                        <input id="files" style="visibility:hidden;" type="file">
+                    <div class="col-md-4 form-group file">
+                        <label>Upload Contract</label>
+                         <label class="labelUpload" for="file-input">Upload Contract</label>
+                        <input type="file" id="file-input">
+                        <div class="clearfix"></div>
                     </div>
                 </div>
             </div>

@@ -242,7 +242,8 @@ export class EditDetailsComponent implements OnInit {
     ]
   }
   editDetails = {
-    status: ''
+    status: '',
+    officeLocation:''
   };
   ngOnInit() {
 
@@ -256,4 +257,3 @@ export class EditDetailsComponent implements OnInit {
   }
 
 }
-

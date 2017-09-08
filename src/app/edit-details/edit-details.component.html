@@ -90,7 +90,7 @@
                     <form #editDetailsForm="ngForm"  (ngSubmit)=' editDetailsForm.valid &&  submitProcess(editDetailsForm); ' novalidate>
                     <div class="col-md-4">
                         <div class="formGroup">
-                            <label>Status</label> 
+                            <label>Status</label>
                             <select class="form-control" name="status" [(ngModel)]="editDetails.status" #status="ngModel" required>
                             <option value="">Select</option>
                             <option value="active">Active</option>
@@ -106,7 +106,7 @@
                         <div class="formGroup">
                             <label>Emp ID</label>
                             <input class="form-control" type="text"  name="employeeId" [(ngModel)]="editDetails.employeeId" #employeeId="ngModel" required>
-                            <div *ngIf="employeeId.errors && (employeeId.dirty || employeeId.touched || editDetailsForm.submitted)  " class="error" >
+                            <div *ngIf="employeeId.errors && (employeeId.dirty || employeeId.touched || editDetailsForm.submitted)  " class="error errorRight" >
                                     <div [hidden]="!employeeId.errors.required">
                                     Employee Id is required!
                                     </div>
@@ -116,7 +116,7 @@
                         <div class="formGroup">
                             <label>User ID</label>
                             <input class="form-control" type="text"  name="userId" [(ngModel)]="editDetails.userId" #userId="ngModel" required>
-                            <div *ngIf="userId.errors && (userId.dirty || userId.touched || editDetailsForm.submitted)  "class="error"  >
+                            <div *ngIf="userId.errors && (userId.dirty || userId.touched || editDetailsForm.submitted)  "class="error errorRight">
                                     <div [hidden]="!userId.errors.required">
                                     User Id is required!
                                     </div>
@@ -126,7 +126,7 @@
                         <div class="formGroup">
                             <label>First Name</label>
                             <input class="form-control" type="text"  name="firstName" [(ngModel)]="editDetails.firstName" #firstName="ngModel" required>
-                            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || editDetailsForm.submitted)  "  class="error">
+                            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || editDetailsForm.submitted)  "  class="error errorRight">
                                     <div [hidden]="!firstName.errors.required">
                                     First Name is required!
                                     </div>
@@ -139,7 +139,7 @@
                         <div class="formGroup">
                             <label>Email ID</label>
                             <input class="form-control" type="email"  name="emailId" [(ngModel)]="editDetails.emailId" #emailId="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
-                            <div *ngIf="emailId.errors && (emailId.dirty || emailId.touched || editDetailsForm.submitted)  " class="error" >
+                            <div *ngIf="emailId.errors && (emailId.dirty || emailId.touched || editDetailsForm.submitted)  " class="error errorRight" >
                                     <div [hidden]="!emailId.errors.required">
                                     Email is required!
                                     </div>
@@ -151,13 +151,13 @@
                         </div>
                         <div class="formGroup">
                             <label>Office Location</label>
-                            <select class="form-control"  name="officeLocation" [(ngModel)]="editDetails.officeLocation" #officeLocation="ngModel" required> 
-                       <option selected value="">states</option>
+                            <select class="form-control"  name="officeLocation" [(ngModel)]="editDetails.officeLocation" #officeLocation="ngModel" required>
+                       <option value="">Select</option>
                        <option *ngFor = "let state of states">{{state.name}}</option>
                    </select>
-                   <div *ngIf="officeLocation.errors && (officeLocation.dirty || officeLocation.touched || editDetailsForm.submitted)  " class="error" >
+                   <div *ngIf="officeLocation.errors && (officeLocation.dirty || officeLocation.touched || editDetailsForm.submitted)  " class="error errorRight" >
                                     <div [hidden]="!officeLocation.errors.required">
-                                    Office Location is required!
+                                    Location is required!
                                     </div>
                                 </div>
 
@@ -166,7 +166,7 @@
                         <div class="formGroup">
                             <label>Last Name</label>
                             <input class="form-control" type="text" name="lastName" [(ngModel)]="editDetails.lastName" #lastName="ngModel" required>
-                             <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || editDetailsForm.submitted)  " class="error" >
+                             <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || editDetailsForm.submitted)  " class="error errorRight" >
                                     <div [hidden]="!lastName.errors.required">
                                     Last Name is required!
                                     </div>
