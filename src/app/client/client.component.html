@@ -32,7 +32,7 @@
                                 <label>State</label>
                                 <!--<input class="form-control form" type="text" name="companyState" [(ngModel)]="company.companyState" #companyState="ngModel" required>-->
                                 <select class="form-control formState" name="companyState" [(ngModel)]="company.companyState" #companyState="ngModel">
-                                    <option value="all">All states</option>
+                                    <option value="all" selected="selected">All states</option>
                                     <option *ngFor="let category of Categories">{{category.name}}</option>
                                 </select>
                                 <div *ngIf="companyState.errors && (companyState.dirty || companyState.touched || contactForm.submitted)  " class="error">

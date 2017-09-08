@@ -44,12 +44,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style="width: 5%">1</td>
-                                <td style="width: 25%">Williams</td>
-                                <td style="width: 30%">james</td>
-                                <td style="width: 20%">123456</td>
-                                <td style="width: 20%">employe</td>
+                            <tr *ngFor='let row of rowData ; let i = index' (click)="editUser(row)">
+                                <td style="width: 5%">{{i+1}}</td>
+                                <td style="width: 25%">{{row.firstName}}</td>
+                                <td style="width: 30%">{{row.lastName}}</td>
+                                <td style="width: 20%">{{row.emailId}}</td>
+                                <td style="width: 20%">{{row.role}}</td>
                             </tr>
                             <!--<tr>
                                 <td style="width: 100%"></td>
@@ -90,8 +90,12 @@
                     <form #editDetailsForm="ngForm"  (ngSubmit)=' editDetailsForm.valid &&  submitProcess(editDetailsForm); ' novalidate>
                     <div class="col-md-4">
                         <div class="formGroup">
-                            <label>Status</label>
-                            <input class="form-control" type="text" name="status" [(ngModel)]="editDetails.status" #status="ngModel" required>
+                            <label>Status</label> 
+                            <select class="form-control" name="status" [(ngModel)]="editDetails.status" #status="ngModel" required>
+                            <option value="">Select</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">InActive</option>
+                            </select>
                             <div *ngIf="status.errors && (status.dirty || status.touched || editDetailsForm.submitted)  " class="error" >
                                     <div [hidden]="!status.errors.required">
                                     Status is required!
@@ -134,11 +138,14 @@
                     <div class="col-md-4">
                         <div class="formGroup">
                             <label>Email ID</label>
-                            <input class="form-control" type="email"  name="emailId" [(ngModel)]="editDetails.emailId" #emailId="ngModel" required>
+                            <input class="form-control" type="email"  name="emailId" [(ngModel)]="editDetails.emailId" #emailId="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
                             <div *ngIf="emailId.errors && (emailId.dirty || emailId.touched || editDetailsForm.submitted)  " class="error" >
                                     <div [hidden]="!emailId.errors.required">
-                                    Email Id is required!
+                                    Email is required!
                                     </div>
+                                    <div  *ngIf="emailId.errors && emailId.errors.pattern">
+                                            Email is invalid!
+                                        </div>
                                 </div>
                             <div class="clearfix"></div>
                         </div>
