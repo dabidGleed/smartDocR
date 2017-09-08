@@ -89,6 +89,7 @@ header .right-head ul li:last-child {
     color: #fff;
     font-size: 14px;
     margin: 3px 0;
+    border: none;
 }
 
 .logo-img {
@@ -615,6 +616,7 @@ td {
     color: red;
     /*z-index: 999;*/
 }
+.error.errorRight{right: 5px !important;}
 
 input[type="number"] {
     -moz-appearance: textfield;
