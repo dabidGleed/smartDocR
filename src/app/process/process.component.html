@@ -4,7 +4,7 @@
         <div class="col-md-2">
             <app-nav-left-process></app-nav-left-process>
         </div>
-       
+
         <div class="col-md-9 col-md-offset-1 contentRight">
              <form #addProcessFrom="ngForm"  (ngSubmit)=' addProcessFrom.valid &&  submitProcess(addProcessFrom); ' novalidate>
             <div class="companyDetails">
@@ -20,31 +20,35 @@
                 </div>
                 <div class="col-md-6 form-group">
                     <label>Turn Time</label>
-                    <select class="form-control form-small formLabel" name="turnStartTime" [(ngModel)]="addProcess.turnStartTime" #turnStartTime="ngModel" required>
-                    <option selected value="">HH</option>
-                    <option *ngFor = "let hour of hours">{{hour}}</option>
-                    </select>
-                   <div *ngIf="turnStartTime.errors && (turnStartTime.dirty || turnStartTime.touched || addProcessFrom.submitted)   "  class="error">
-                    <div [hidden]="!turnStartTime.errors.required">
-                      Turn Start Time is required!
+                    <div class="processPosition">
+                      <select class="form-control form-small formLabel" name="turnStartTime" [(ngModel)]="addProcess.turnStartTime" #turnStartTime="ngModel" required>
+                      <option selected value="">HH</option>
+                      <option *ngFor = "let hour of hours">{{hour}}</option>
+                      </select>
+                     <div *ngIf="turnStartTime.errors && (turnStartTime.dirty || turnStartTime.touched || addProcessFrom.submitted)   "  class="error errorRight">
+                      <div [hidden]="!turnStartTime.errors.required">
+                        Start Time is required!
+                      </div>
                     </div>
-                  </div>
-
-                    <select class="form-control  form-small formLabel" name="turnEndTime" [(ngModel)]="addProcess.turnEndTime" #turnEndTime="ngModel" required>
-                    <option selected value="">MM</option>
-                    <option *ngFor = "let min of mins">{{min}}</option>
-                    </select>
-                    <div *ngIf="turnEndTime.errors && (turnEndTime.dirty || turnEndTime.touched || addProcessFrom.submitted)  " class="error" >
-                    <div [hidden]="!turnEndTime.errors.required">
-                      Turn End Time is required!
                     </div>
-                  </div>
+                    <div class="processPosition">
+                      <select class="form-control  form-small formLabel" name="turnEndTime" [(ngModel)]="addProcess.turnEndTime" #turnEndTime="ngModel" required>
+                      <option selected value="">MM</option>
+                      <option *ngFor = "let min of mins">{{min}}</option>
+                      </select>
+                      <div *ngIf="turnEndTime.errors && (turnEndTime.dirty || turnEndTime.touched || addProcessFrom.submitted)  " class="error errorRight" >
+                      <div [hidden]="!turnEndTime.errors.required">
+                        End Time is required!
+                      </div>
+                    </div>
+                    </div>
                     <div class="clearfix"></div>
                 </div>
                 <div class="clearfix"></div>
             </div>
             <div class="companyDetails compantForm">
-                <div class="col-md-12 form-group">
+                <div class="col-md-12">
+                  <div class="form-group">
                     <label>Remarks</label>
                     <textarea class="form-control formTextArea" cols="100" name="remarks" [(ngModel)]="addProcess.remarks" #remarks="ngModel" required></textarea>
                 <div *ngIf="remarks.errors && (remarks.dirty || remarks.touched || addProcessFrom.submitted)  " class="error" >
@@ -52,7 +56,9 @@
                       Remarks is required!
                     </div>
                   </div>
+                  <div class="clearfix"></div>
                 </div>
+              </div>
                 <div class="clearfix"></div>
             </div>
             <div class="col-md-12">
@@ -63,7 +69,7 @@
                 <div class="clearfix"></div>
             </div>
 </form>
-           
+
             <div class="clearfix"></div>
             <div class="col-md-12 tableDetails">
                 <table class="table table-bordered processTable" style="width: 100%">
@@ -100,7 +106,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
-         
+
         <div class="clearfix"></div>
     </div>
 </section>
