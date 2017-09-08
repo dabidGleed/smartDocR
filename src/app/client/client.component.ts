@@ -15,7 +15,7 @@ export class ClientComponent implements OnInit {
   constructor() {}
   rowData = [];
   contactDetails = {};
-  Categories = [
+ Categories = [
     { name: 'ALABAMA', abbreviation: 'AL'},
     { name: 'ALASKA', abbreviation: 'AK'},
     { name: 'AMERICAN SAMOA', abbreviation: 'AS'},
@@ -76,8 +76,7 @@ export class ClientComponent implements OnInit {
     { name: 'WISCONSIN', abbreviation: 'WI'},
     { name: 'WYOMING', abbreviation: 'WY' }
   ];
-  
-  company= {};
+    company= {};
   client = {};
   addRow(data) {
      this.rowData.push({firstName:data.firstName,lastName:data.lastName,phoneNumber:data.phoneNumber,email:data.lastName});
@@ -86,12 +85,13 @@ export class ClientComponent implements OnInit {
   }
   removeRow(i) {
     this.rowData.splice(i, 1);
-
+ 
   }
   submitProcess(contactForm: NgForm){
     console.log(contactForm.value);
 
   }
   ngOnInit() {}
+ 
 }
 
