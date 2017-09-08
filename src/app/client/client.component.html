@@ -31,9 +31,9 @@
                             <div class="col-md-6 form-group">
                                 <label>State</label>
                                 <!--<input class="form-control form" type="text" name="companyState" [(ngModel)]="company.companyState" #companyState="ngModel" required>-->
-                                <select class="form-control formState" name="companyState" [(ngModel)]="company.companyState" #companyState="ngModel">
-                                    <option value="all">All states</option>
-                                    <option *ngFor="let category of Categories">{{category.name}}</option>
+                                <select class="form-control formState" name="companyState" [(ngModel)]="company.companyState" #companyState="ngModel" required>
+                                    <option value="All">All states</option>
+                                    <option *ngFor="let category of Categories" [value]="category.id">{{category.name}}</option>
                                 </select>
                                 <div *ngIf="companyState.errors && (companyState.dirty || companyState.touched || contactForm.submitted)  " class="error">
                                     <div [hidden]="!companyState.errors.required">
@@ -57,7 +57,7 @@
                                     <label class="formLabel">City</label>
                                     <input class="form-control formSmall" type="text" name="companyCity" [(ngModel)]="company.companyCity" #companyCity="ngModel" required>
                                     <div class="clearfix"></div>
-                                    <div *ngIf="companyCity.errors && (companyCity.dirty || companyCity.touched || contactForm.submitted)  " class="error">
+                                    <div *ngIf="companyCity.errors && (companyCity.dirty || companyCity.touched || contactForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!companyCity.errors.required">
                                             City is required!
                                         </div>
@@ -67,7 +67,7 @@
                                     <label class="labelSmall">Zip</label>
                                     <input class="form-control formSmall" type="text" name="companyZipCode" [(ngModel)]="company.companyZipCode" #companyZipCode="ngModel" required>
                                     <div class="clearfix"></div>
-                                    <div *ngIf="companyZipCode.errors && (companyZipCode.dirty || companyZipCode.touched || contactForm.submitted)  " class="error">
+                                    <div *ngIf="companyZipCode.errors && (companyZipCode.dirty || companyZipCode.touched || contactForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!companyZipCode.errors.required">
                                             Zipcode is required!
                                         </div>
@@ -85,7 +85,7 @@
                         <div class="row companyDetails">
                             <div class="col-md-6 form-group">
                                 <div class="">
-                                    <label>First Name   </label>
+                                    <label>First Name</label>
                                     <input class="form-control form" type="text" name="firstName" [(ngModel)]="contactDetails.firstName" #firstName="ngModel">
                                     <div class="clearfix"></div>
 
@@ -173,7 +173,7 @@
                             </div>
                         </div>
                         <div class="col-md-6 pull-right">
-                             
+
                             <p class="text-right"  ><a class="clickAdd" (click)='removeRow(i)'>-</a>Remove</p>
                         </div>
                     </div>
@@ -213,7 +213,7 @@
                                   <input type="checkbox">
                                   <span class="slider round"></span>
                                 </label>
-                                <span class="toggleActive">Active</span>
+                                <!-- <span class="toggleActive">Active</span> -->
                             </div>
                         </div>
                     </div>
@@ -238,7 +238,7 @@
                                 <div class="">
                                     <label>Products Selected</label>
                                     <!--<input class="form-control form" type="text" name="companyProductSelected" [(ngModel)]="company.companyProductSelected" #companyProductSelected="ngModel" required>-->
-                                    <select class="form-control formState" name="companyProductSelected" [(ngModel)]="company.companyProductSelected" #companyProductSelected="ngModel">
+                                    <select class="form-control formState" name="companyProductSelected" [(ngModel)]="company.companyProductSelected" #companyProductSelected="ngModel" required>
                                     <option value="all">All</option>
                                     <option value="all">All1</option>
                                     <option value="all">All2</option>
