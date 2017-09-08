@@ -261,7 +261,7 @@ input[type="checkbox"] {
 }
 
 .companyDetails {
-    margin-top: 30px
+    margin-top: 20px
 }
 
 
@@ -621,3 +621,8 @@ td {
 input[type="number"] {
     -moz-appearance: textfield;
 }
+ 
+.btnActive{
+    background: #51c8ea;
+}
+ 
