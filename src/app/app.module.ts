@@ -45,7 +45,7 @@ import { ProcessComponent } from './process/process.component';
 import { NavLeftComponent } from './nav-left/nav-left.component';
 import { NavLeftProcessComponent } from './nav-left-process/nav-left-process.component';
 import { HeaderNewComponent } from './header-new/header-new.component';
-
+ 
 
 
 
@@ -53,7 +53,7 @@ import { HeaderNewComponent } from './header-new/header-new.component';
   imports: [
     BrowserModule, BrowserAnimationsModule, ReactiveFormsModule, FormsModule,
     routing, CoreModule, SharedModule, ClientDocumentsMappingModule,
-    HotkeyModule.forRoot(), LoadingAnimateModule.forRoot(), Ng2DragDropModule.forRoot(),AccordionModule,
+    HotkeyModule.forRoot(), LoadingAnimateModule.forRoot(), Ng2DragDropModule.forRoot(),AccordionModule, 
     BsDatepickerModule.forRoot()
   ],
 
