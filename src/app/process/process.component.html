@@ -22,8 +22,8 @@
                     <label>Turn Time</label>
                     <div class="processPosition">
                       <select class="form-control form-small formLabel" name="turnStartTime" [(ngModel)]="addProcess.turnStartTime" #turnStartTime="ngModel" required>
-                      <option selected value="">HH</option>
-                      <option *ngFor = "let hour of hours">{{hour}}</option>
+                      <option value="">HH</option>
+                      <option *ngFor = "let hour of hours" >{{hour}}</option>
                       </select>
                      <div *ngIf="turnStartTime.errors && (turnStartTime.dirty || turnStartTime.touched || addProcessFrom.submitted)   "  class="error errorRight">
                       <div [hidden]="!turnStartTime.errors.required">
@@ -33,7 +33,7 @@
                     </div>
                     <div class="processPosition">
                       <select class="form-control  form-small formLabel" name="turnEndTime" [(ngModel)]="addProcess.turnEndTime" #turnEndTime="ngModel" required>
-                      <option selected value="">MM</option>
+                      <option value="">MM</option>
                       <option *ngFor = "let min of mins">{{min}}</option>
                       </select>
                       <div *ngIf="turnEndTime.errors && (turnEndTime.dirty || turnEndTime.touched || addProcessFrom.submitted)  " class="error errorRight" >

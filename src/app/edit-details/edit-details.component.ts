@@ -245,6 +245,15 @@ export class EditDetailsComponent implements OnInit {
     status: '',
     officeLocation:''
   };
+  roles =[
+  {"name":"operetor"},
+  {"name":"Manager"},
+  {"name":"Admin"},
+  {"name":"User"}
+  ]
+  editRole={
+  searchRole:''
+  }
   ngOnInit() {
 
   }
