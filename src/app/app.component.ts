@@ -25,4 +25,5 @@ export class AppComponent implements OnInit {
       () => { this.openHelp = !this.openHelp; }
     );
   }
+
 }

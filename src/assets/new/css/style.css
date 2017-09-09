@@ -85,7 +85,7 @@ header .right-head ul li:last-child {
 .button {
     display: inline-block;
     padding: 6px 15px;
-    background: red;
+    background: #FF0000;
     color: #fff;
     font-size: 14px;
     margin: 3px 0;
@@ -140,7 +140,7 @@ header .right-head ul li:last-child {
 }
 
 .companyDetails .formGroup {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
     position: relative;
 }
 
@@ -262,7 +262,8 @@ input[type="checkbox"] {
 }
 
 .companyDetails {
-    margin-top: 20px
+    margin-top: 20px;
+    position:relative;
 }
 
 
@@ -610,10 +611,12 @@ td {
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 12px;
-    color: red;
+    color: #FF0000;
     /*z-index: 999;*/
 }
 .error.errorRight{right: 5px !important;}
+.companyDetails .errorLabel{width: auto;line-height: 20px;}
+.error.errorContact{bottom: 66px;right: 50%;margin-right: -163px;}
 
 input[type="number"] {
     -moz-appearance: textfield;
@@ -641,3 +644,5 @@ input[type=number]::-webkit-outer-spin-button {
 .btnActive{
     background: #51c8ea;
 }
+
+bs-datepicker-container{top:130px !important;}

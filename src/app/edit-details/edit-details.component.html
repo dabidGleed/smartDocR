@@ -11,8 +11,9 @@
                     <div class="row companyDetails">
                         <div class="col-md-4 formGroup">
                             <label>Search By Role</label>
-                            <select class="form-control formInput">
-                            <option value="all"></option>
+                         <select class="form-control formInput" name="searchRole" [(ngModel)]="editRole.searchRole" #searchRole="ngModel" required>
+                         <option value="">Select</option>
+                         <option *ngFor = "let role of roles">{{role.name}}</option>
                          </select>
                             <div class="clearfix"></div>
                         </div>
@@ -33,7 +34,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="tableDetails">
-                    <table class="table table-bordered DetailsTable" style="width: 100%">
+                    <table class="table table-bordered DetailsTable table-hover" style="width: 100%">
                         <thead>
                             <tr>
                                 <th style="width: 5%">No.</th>
@@ -96,7 +97,7 @@
                             <option value="active">Active</option>
                             <option value="inactive">InActive</option>
                             </select>
-                            <div *ngIf="status.errors && (status.dirty || status.touched || editDetailsForm.submitted)  " class="error" >
+                            <div *ngIf="status.errors && (status.dirty || status.touched || editDetailsForm.submitted)  " class="error errorRight" >
                                     <div [hidden]="!status.errors.required">
                                     Status is required!
                                     </div>

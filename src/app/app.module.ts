@@ -6,7 +6,9 @@ import { Ng2DragDropModule } from 'ng2-drag-drop';
 
 import { HotkeyModule } from 'angular2-hotkeys';
 import {AccordionModule} from "ngx-accordion";
-import { BsDatepickerModule } from 'ngx-bootstrap/datepicker'
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TextMaskModule } from 'angular2-text-mask';
+
 
 // core module
 import { CoreModule } from './core/core.module';
@@ -45,7 +47,7 @@ import { ProcessComponent } from './process/process.component';
 import { NavLeftComponent } from './nav-left/nav-left.component';
 import { NavLeftProcessComponent } from './nav-left-process/nav-left-process.component';
 import { HeaderNewComponent } from './header-new/header-new.component';
- 
+
 
 
 
@@ -53,8 +55,8 @@ import { HeaderNewComponent } from './header-new/header-new.component';
   imports: [
     BrowserModule, BrowserAnimationsModule, ReactiveFormsModule, FormsModule,
     routing, CoreModule, SharedModule, ClientDocumentsMappingModule,
-    HotkeyModule.forRoot(), LoadingAnimateModule.forRoot(), Ng2DragDropModule.forRoot(),AccordionModule, 
-    BsDatepickerModule.forRoot()
+    HotkeyModule.forRoot(), LoadingAnimateModule.forRoot(), Ng2DragDropModule.forRoot(),AccordionModule,
+    BsDatepickerModule.forRoot(),TextMaskModule
   ],
 
   declarations: [AppComponent,
@@ -65,4 +67,3 @@ import { HeaderNewComponent } from './header-new/header-new.component';
   providers: [AppConfigService, LoadingAnimateService]
 })
 export class AppModule { }
-
