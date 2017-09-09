@@ -119,4 +119,5 @@ export class AddClientComponent implements OnInit {
       }
     });
   }
+  mask: any[] = ['+', '1', ' ', '(', /[1-9]/, /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/];
 }

@@ -262,7 +262,8 @@ input[type="checkbox"] {
 }
 
 .companyDetails {
-    margin-top: 20px
+    margin-top: 20px;
+    position:relative;
 }
 
 
@@ -614,6 +615,8 @@ td {
     /*z-index: 999;*/
 }
 .error.errorRight{right: 5px !important;}
+.companyDetails .errorLabel{width: auto;line-height: 20px;}
+.error.errorContact{bottom: 66px;right: 50%;margin-right: -163px;}
 
 input[type="number"] {
     -moz-appearance: textfield;
