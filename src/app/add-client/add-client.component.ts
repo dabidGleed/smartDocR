@@ -92,10 +92,9 @@ export class AddClientComponent implements OnInit {
     companyProductSelected:""
   };
   client = {};
-  addRow(data) {
-    this.rowData.push({ firstName: data.firstName, lastName: data.lastName, phoneNumber: data.phoneNumber, email: data.lastName });
-    this.contactDetails = {};
-
+  addRow(addcontactForm: NgForm) {
+     this.rowData.push({ firstName: addcontactForm.value.firstName, lastName: addcontactForm.value.lastName, phoneNumber: addcontactForm.value.phoneNumber, email: addcontactForm.value.email });
+      addcontactForm.resetForm();
   }
   removeRow(i) {
     this.rowData.splice(i, 1);
@@ -103,6 +102,8 @@ export class AddClientComponent implements OnInit {
   }
   submitProcess(contactForm: NgForm) {
     console.log(contactForm.value);
+    this.rowData = [];
+    contactForm.resetForm();
 
   }
 
