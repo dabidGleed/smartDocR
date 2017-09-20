@@ -665,6 +665,22 @@ namespace WebApplication4.Controllers
 
           return Request.CreateResponse(HttpStatusCode.OK, ExtractionConfigs);
         }
+    [Route("api/savenewclient")]
+    public HttpResponseMessage savenewclient(newclient data)
+    {
+      //var context = new SMARTINDEXEntities();
+      //List<Cst_DocName> newCst_DocName = new List<Cst_DocName>();
+      //var NewDocName = new Cst_DocName
+      //{
+      //    DocName = data.DocName,
+      //    Createdby = data.Createdby
+
+      //};
+      //newCst_DocName.Add(NewDocName);
+      //context.Cst_DocName.AddRange(newCst_DocName);
+      //context.SaveChanges();
+      return Request.CreateResponse(HttpStatusCode.OK, "Saved successfully");
+    }
 
   }
     public class Configdate
@@ -758,5 +774,20 @@ namespace WebApplication4.Controllers
         public string newvalue { get; set; }
         public string oldValue { get; set; }
         public string fileName { get; set; }
+  }
+  public class newclient
+  {
+    public string companyBranchName { get; set; }
+    public string companyBranchNumber { get; set; }
+    public string companyCity { get; set; }
+    public string companyContractDate { get; set; }
+    public string companyName { get; set; }
+    public string companyProductSelected { get; set; }
+    public string companyState { get; set; }
+    public string companyZipCode { get; set; }
+    public string email { get; set; }
+    public string firstName { get; set; }
+    public string lastName { get; set; }
+    public string phoneNumber { get; set; }
   }
 }

@@ -44,6 +44,8 @@ import { NavLeftComponent } from './nav-left/nav-left.component';
 import { NavLeftProcessComponent } from './nav-left-process/nav-left-process.component';
 import { HeaderNewComponent } from './header-new/header-new.component';
 
+import { ClientService } from './client/client.service';
+
 
 
 
@@ -59,7 +61,7 @@ import { HeaderNewComponent } from './header-new/header-new.component';
     BatchManagmentComponent, UserLeftNavComponent, UserActionBarComponent, FirstPageComponent, WorkFlowComponent, EditDetailsComponent, CompanyIndexComponent, ModuleIndexComponent, OperatorComponent, PermissionComponent, ClientComponent, ProcessComponent, NavLeftComponent, NavLeftProcessComponent, HeaderNewComponent
   ],
   bootstrap: [AppComponent],
-  providers: [AppConfigService, LoadingAnimateService]
+  providers: [AppConfigService, LoadingAnimateService,ClientService]
 })
 export class AppModule { }
 

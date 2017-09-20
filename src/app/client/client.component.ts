@@ -5,6 +5,8 @@ import {
 import {
   NgForm
 } from '@angular/forms';
+
+import { ClientService } from './client.service';
 @Component({
   selector: 'app-client',
   templateUrl: './client.component.html',
@@ -12,7 +14,7 @@ import {
 })
 export class ClientComponent implements OnInit {
 
-  constructor() {}
+  constructor(private ClientService: ClientService) {}
   rowData = [];
   contactDetails = {};
   Categories = [
@@ -90,7 +92,13 @@ export class ClientComponent implements OnInit {
   }
   submitProcess(contactForm: NgForm){
     console.log(contactForm.value);
-
+    this.savenewclient(contactForm.value);
+  }
+  savenewclient(newclient:any) {
+    this.ClientService.savenewclientData(newclient).subscribe(
+      data => { alert('saved successfully'); },
+      error => { }
+    );
   }
   ngOnInit() {}
 }
