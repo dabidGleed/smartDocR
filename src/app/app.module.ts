@@ -47,6 +47,7 @@ import { ProcessComponent } from './process/process.component';
 import { NavLeftComponent } from './nav-left/nav-left.component';
 import { NavLeftProcessComponent } from './nav-left-process/nav-left-process.component';
 import { HeaderNewComponent } from './header-new/header-new.component';
+import { ProvistionComponent } from './provistion/provistion.component';
 
 
 
@@ -61,7 +62,7 @@ import { HeaderNewComponent } from './header-new/header-new.component';
 
   declarations: [AppComponent,
     HomeComponent, BatchManagmentAuditComponent, AuditActionBarComponent,
-    BatchManagmentComponent, UserLeftNavComponent, UserActionBarComponent, FirstPageComponent, WorkFlowComponent, EditDetailsComponent, CompanyIndexComponent, ModuleIndexComponent, OperatorComponent, PermissionComponent, ClientComponent, AddClientComponent,ClientSetupComponent,ProcessComponent, NavLeftComponent, NavLeftProcessComponent, HeaderNewComponent
+    BatchManagmentComponent, UserLeftNavComponent, UserActionBarComponent, FirstPageComponent, WorkFlowComponent, EditDetailsComponent, CompanyIndexComponent, ModuleIndexComponent, OperatorComponent, PermissionComponent, ClientComponent, AddClientComponent,ClientSetupComponent,ProcessComponent, NavLeftComponent, NavLeftProcessComponent, HeaderNewComponent, ProvistionComponent
   ],
   bootstrap: [AppComponent],
   providers: [AppConfigService, LoadingAnimateService]

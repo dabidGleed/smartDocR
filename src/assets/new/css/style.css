@@ -172,10 +172,6 @@ input[type="checkbox"] {
     background: #51c8ea;
 }
 
-.contentRight {
-    background: #fff;
-}
-
 .defaultNav {
     padding: 20px 0;
 }
@@ -251,6 +247,8 @@ input[type="checkbox"] {
     -moz-box-shadow: 5px -1px 5px -3px rgba(128, 121, 128, 1);
     box-shadow: 5px -1px 5px -3px rgba(128, 121, 128, 1);
     border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 

@@ -1,10 +1,5 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import {
-  NgForm
-} from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import { NgForm} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -13,7 +8,6 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./add-client.component.css']
 })
 export class AddClientComponent implements OnInit {
-
   constructor(private route: ActivatedRoute) { }
   id: number;
   private sub: any;
@@ -104,7 +98,6 @@ export class AddClientComponent implements OnInit {
     console.log(contactForm.value);
     this.rowData = [];
     contactForm.resetForm();
-
   }
 
   ngOnInit() {
