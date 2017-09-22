@@ -149,7 +149,7 @@
                                    <div [hidden]="!clientEmail.errors.required">
                                        Email is required!
                                    </div>
-                                   <div [hidden]="!clientEmail.errors">
+                                   <div *ngIf="clientEmail.errors && clientEmail.errors.pattern">
                                     Please input a valid email.
                                   </div>
                                </div>
