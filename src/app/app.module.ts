@@ -49,6 +49,8 @@ import { NavLeftProcessComponent } from './nav-left-process/nav-left-process.com
 import { HeaderNewComponent } from './header-new/header-new.component';
 import { ProvistionComponent } from './provistion/provistion.component';
 
+import { ClientService } from './client/client.service';
+
 
 
 
@@ -65,6 +67,6 @@ import { ProvistionComponent } from './provistion/provistion.component';
     BatchManagmentComponent, UserLeftNavComponent, UserActionBarComponent, FirstPageComponent, WorkFlowComponent, EditDetailsComponent, CompanyIndexComponent, ModuleIndexComponent, OperatorComponent, PermissionComponent, ClientComponent, AddClientComponent,ClientSetupComponent,ProcessComponent, NavLeftComponent, NavLeftProcessComponent, HeaderNewComponent, ProvistionComponent
   ],
   bootstrap: [AppComponent],
-  providers: [AppConfigService, LoadingAnimateService]
+  providers: [AppConfigService, LoadingAnimateService,ClientService]
 })
 export class AppModule { }
