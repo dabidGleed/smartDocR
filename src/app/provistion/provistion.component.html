@@ -1,0 +1,171 @@
+<app-header-new></app-header-new>
+<section class="middle-content container-fluid" style="background-image: url('assets/new/images/background.jpg');">
+    <div class="customTop">
+        <div class="col-md-2">
+            <app-nav-left-process></app-nav-left-process>
+        </div>
+
+        <div class="col-md-9 col-md-offset-1 contentRight">
+             <form #contactForm="ngForm"  novalidate>
+               <div class="companyDetails">
+                 <h4 class="heading edit">Select Client</h4>
+                   <div class="row companyDetails">
+                       <div class="col-md-12 form-group">
+                           <label>Client</label>
+                           <!--<input class="form-control form" type="text" name="companyState" [(ngModel)]="company.companyState" #companyState="ngModel" required>-->
+                           <select class="form-control formState" name="selectClient" [(ngModel)]="company.selectClient" #selectClient="ngModel" required>
+                               <option value="">Select client</option>
+                               <option *ngFor="let client of clients" [value]="client.id">{{client.name}}</option>
+                           </select>
+                           <div *ngIf="selectClient.errors && (selectClient.dirty || selectClient.touched || selectClient.submitted)  " class="error">
+                               <div [hidden]="!selectClient.errors.required">
+                                   Client is required!
+                               </div>
+                           </div>
+                           <div class="clearfix"></div>
+                       </div>
+                       <div class="clearfix"></div>
+                   </div>
+               </div>
+             </form>
+             <form #contactFormFtp="ngForm" (ngSubmit)=' contactFormFtp.valid &&  ftpProcess(contactFormFtp); ' novalidate>
+               <div class="companyDetails">
+                   <h4 class="heading edit">FTP</h4>
+                   <div class="row companyDetails">
+                       <div class="col-md-6 form-group">
+                           <div class="">
+                               <label>URL</label>
+                               <input class="form-control form" type="text" name="clientUrl" [(ngModel)]="company.clientUrl" #clientUrl="ngModel" required>
+                               <div *ngIf="clientUrl.errors && (clientUrl.dirty || clientUrl.touched || contactFormFtp.submitted)  " class="error">
+                                   <div [hidden]="!clientUrl.errors.required">
+                                      Url is required!
+                                   </div>
+                               </div>
+                               <div class="clearfix"></div>
+                           </div>
+                       </div>
+                       <div class="col-md-6 form-group">
+                           <label>User Name</label>
+                           <!--<input class="form-control form" type="text" name="companyState" [(ngModel)]="company.companyState" #companyState="ngModel" required>-->
+                           <input class="form-control form" type="text" name="clientUser" [(ngModel)]="company.clientUser" #clientUser="ngModel" required>
+                           <div *ngIf="clientUser.errors && (clientUser.dirty || clientUser.touched || contactFormFtp.submitted)  " class="error">
+                               <div [hidden]="!clientUser.errors.required">
+                                   User Name is required!
+                               </div>
+                           </div>
+                           <div class="clearfix"></div>
+                       </div>
+                       <div class="col-md-6 form-group">
+                           <label>Password</label>
+                           <input class="form-control form" type="password" name="clientPassword" [(ngModel)]="company.clientPassword" #clientPassword="ngModel" required>
+                           <div *ngIf="clientPassword.errors && (clientPassword.dirty || clientPassword.touched || contactFormFtp.submitted)  " class="error">
+                               <div [hidden]="!clientPassword.errors.required">
+                                   Password is required!
+                               </div>
+                           </div>
+                           <div class="clearfix"></div>
+                       </div>
+                       <div class="clearfix"></div>
+                       <div class="col-md-2 pull-right">
+                               <button class="button btn-blue buttonEdit pull-right" type="submit">ADD</button>
+                               <div class="clearfix"></div>
+                       </div>
+                       <div class="clearfix"></div>
+                   </div>
+               </div>
+               </form>
+               <form #contactFolderForm="ngForm" (ngSubmit)=' contactFolderForm.valid && submitName(contactFolderForm); ' novalidate>
+               <div class="companyDetails">
+                   <h4 class="heading edit">Folder Name</h4>
+                   <div class="row companyDetails">
+                       <div class="col-md-6 form-group">
+                           <div class="">
+                               <label>Folder Name</label>
+                               <input class="form-control form" type="text" name="folderName" [(ngModel)]="company.folderName" #folderName="ngModel" required>
+                               <div *ngIf="folderName.errors && (folderName.dirty || folderName.touched || contactFolderForm.submitted)  " class="error">
+                                   <div [hidden]="!folderName.errors.required">
+                                       Folder Name is required!
+                                   </div>
+                               </div>
+                               <div class="clearfix"></div>
+                           </div>
+                       </div>
+                       <div class="col-md-6 form-group">
+                           <label>URL</label>
+                           <input class="form-control form" type="text" name="folderUrl" [(ngModel)]="company.folderUrl" #folderUrl="ngModel" required>
+                           <div *ngIf="folderUrl.errors && (folderUrl.dirty || folderUrl.touched || contactFolderForm.submitted)  " class="error">
+                               <div [hidden]="!folderUrl.errors.required">
+                                   url is required!
+                               </div>
+                           </div>
+                           <div class="clearfix"></div>
+                       </div>
+                       <div class="clearfix"></div>
+                       <div class="col-md-2 pull-right">
+                               <button class="button btn-blue buttonEdit pull-right" type="submit">ADD</button>
+                               <div class="clearfix"></div>
+                       </div>
+                    <div class="clearfix"></div>
+                   </div>
+               </div>
+               </form>
+               <form #contactIpForm="ngForm" (ngSubmit)=' contactIpForm.valid &&  submitIp(contactIpForm); ' novalidate>
+               <div class="companyDetails">
+                   <h4 class="heading edit">Scan</h4>
+                   <div class="row companyDetails">
+                       <div class="col-md-12 form-group">
+                           <div class="">
+                               <label>IP</label>
+                               <input class="form-control form" type="number" name="clientIp" [(ngModel)]="company.clientIp" #clientIp="ngModel" required>
+                               <div *ngIf="clientIp.errors && (clientIp.dirty || clientIp.touched || contactIpForm.submitted)  " class="error">
+                                   <div [hidden]="!clientIp.errors.required">
+                                       Ip is required!
+                                   </div>
+                                   <div [hidden]="clientIp.errors.required">
+                                       Enter Numaric only
+                                   </div>
+                               </div>
+                               <div class="clearfix"></div>
+                           </div>
+                       </div>
+                       <div class="clearfix"></div>
+                       <div class="col-md-2 pull-right">
+                               <button class="button btn-blue buttonEdit pull-right" type="submit">ADD</button>
+                               <div class="clearfix"></div>
+                       </div>
+                       <div class="clearfix"></div>
+                   </div>
+               </div>
+               </form>
+               <form #contactEmailForm="ngForm" (ngSubmit)=' contactEmailForm.valid &&  submitEmail(contactEmailForm); ' novalidate>
+               <div class="companyDetails">
+                   <h4 class="heading edit">Email</h4>
+                   <div class="row companyDetails">
+                       <div class="col-md-12 form-group">
+                           <div class="">
+                               <label>Email</label>
+                               <input class="form-control form" type="email" name="clientEmail" [(ngModel)]="company.clientEmail" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" #clientEmail="ngModel" required>
+                               <div *ngIf="clientEmail.errors && (clientEmail.dirty || clientEmail.touched || contactEmailForm.submitted)  " class="error">
+                                   <div [hidden]="!clientEmail.errors.required">
+                                       Email is required!
+                                   </div>
+                                   <div [hidden]="!clientEmail.errors">
+                                    Please input a valid email.
+                                  </div>
+                               </div>
+                               <div class="clearfix"></div>
+                           </div>
+                       </div>
+                       <div class="clearfix"></div>
+                       <div class="col-md-2 pull-right">
+                               <button class="button btn-blue buttonEdit pull-right" type="submit">ADD</button>
+                               <div class="clearfix"></div>
+                       </div>
+                       <div class="clearfix"></div>
+                   </div>
+               </div>
+</form>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</section>
