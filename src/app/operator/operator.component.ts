@@ -13,6 +13,14 @@ import {
 export class OperatorComponent implements OnInit {
 
   constructor() {}
+  Answer = [];
+  simpleQuestion= [
+  { question: 'What is your first school'},
+  { question: 'What is your favorite food'},
+  { question: 'What is your best friend name'}
+  ];
+  Answers() {
+}
 
   ngOnInit() {}
 

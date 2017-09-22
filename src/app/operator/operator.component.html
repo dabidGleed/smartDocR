@@ -17,12 +17,10 @@
                 </div>
                 <div class="customProcess">
                     <form #operatorForm="ngForm" (keydown.enter)="$event.preventDefault()" (ngSubmit)=' operatorForm.valid && (roles.operator || roles.manager || roles.admin || roles.user ) && submitProcess(operatorForm); ' novalidate>
-
-
                         <div class="col-md-4 from-group companyDetails">
                             <label for="">Client</label>
 
-                              <select class="form-control " name="client" [(ngModel)]="addOperator.client" #client="ngModel" required>
+                              <select class="form-control formState" name="client" [(ngModel)]="addOperator.client" #client="ngModel" required>
                                     <option  value=""   >Select</option>
                                      <option *ngFor="let client of clientData" [value]="client.id">{{client.name}}</option>
                                 </select>
@@ -54,7 +52,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Emp Id</label>
-                                    <input class="form-control" type="text"    name="employeeId"  [(ngModel)]="addOperator.employeeId" #employeeId="ngModel"  required>
+                                    <input class="form-control formState" type="text"    name="employeeId"  [(ngModel)]="addOperator.employeeId" #employeeId="ngModel"  required>
                                     <div *ngIf="employeeId.errors && (employeeId.dirty || employeeId.touched || operatorForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!employeeId.errors.required">
                                             Employee Id is required!
@@ -66,7 +64,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Email Id</label>
-                                    <input class="form-control" type="email" name="emailId" (keyup.enter)="addUserId(addOperator)"     [(ngModel)]="addOperator.emailId" #emailId="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                                    <input class="form-control formState" type="email" name="emailId" (keyup.enter)="addUserId(addOperator)"     [(ngModel)]="addOperator.emailId" #emailId="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
                                     <div *ngIf="emailId.errors && (emailId.dirty || emailId.touched || operatorForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!emailId.errors.required">
                                             Email is required!
@@ -82,7 +80,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">User Id</label>
-                                    <input class="form-control" type="text" name="userId" [(ngModel)]="addOperator.userId" #userId="ngModel" required>
+                                    <input class="form-control formState" type="text" name="userId" [(ngModel)]="addOperator.userId" #userId="ngModel" required>
                                     <div *ngIf="userId.errors && (userId.dirty || userId.touched || operatorForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!userId.errors.required">
                                             User Id is required!
@@ -95,7 +93,7 @@
                                 <div class="form-group">
                                     <label for="">Office Location</label>
                                     <!-- <input class="form-control" type="text" name="officeLocation" [(ngModel)]="addOperator.officeLocation" #officeLocation="ngModel" required> -->
-                                    <select class="form-control " name="officeLocation" [(ngModel)]="addOperator.officeLocation" #officeLocation="ngModel" required>
+                                    <select class="form-control formState" name="officeLocation" [(ngModel)]="addOperator.officeLocation" #officeLocation="ngModel" required>
                                           <option value="">Select</option>
                                            <option *ngFor="let state of states" [value]="state.id">{{state.name}}</option>
                                       </select>
@@ -110,7 +108,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">First Name</label>
-                                    <input class="form-control" type="text" name="firstName" [(ngModel)]="addOperator.firstName" #firstName="ngModel" required>
+                                    <input class="form-control formState" type="text" name="firstName" [(ngModel)]="addOperator.firstName" #firstName="ngModel" required>
                                     <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || operatorForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!firstName.errors.required">
                                             First Name is required!
@@ -122,7 +120,7 @@
                             <div class="col-md-4">
                                 <div class="form-group">
                                     <label for="">Last Name</label>
-                                    <input class="form-control" type="text" name="lastName" [(ngModel)]="addOperator.lastName" #lastName="ngModel" required>
+                                    <input class="form-control formState" type="text" name="lastName" [(ngModel)]="addOperator.lastName" #lastName="ngModel" required>
                                     <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || operatorForm.submitted)  " class="error errorRight">
                                         <div [hidden]="!lastName.errors.required">
                                             Last Name is required!
@@ -132,8 +130,55 @@
                                 </div>
                             </div>
                             <div class="clearfix"></div>
+                            <div class="col-md-6">
+                              <div class="">
+                                <div class="form-group">
+                                  <label for="">Question</label>
+                                    <select class="form-control formState">
+                                        <option value="">Question No 1</option>
+                                        <option *ngFor="let simple of simpleQuestion" [value]="simple.id">{{simple.question}}</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="">Answer</label>
+                                    <input class="form-control formState" type="text" placeholder="Answer">
+                                    <div class="clearfix"></div>
+                                </div>
+                              </div>
+                              <div class="">
+                                <div class="form-group">
+                                  <label for="">Question</label>
+                                    <select class="form-control formState">
+                                        <option value="">Question No 2</option>
+                                        <option *ngFor="let simple of simpleQuestion" [value]="simple.id">{{simple.question}}</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="">Answer</label>
+                                    <input class="form-control formState" type="text" placeholder="Answer">
+                                    <div class="clearfix"></div>
+                                </div>
+                              </div>
+                              <div class="">
+                                <div class="form-group">
+                                  <label for="">Question</label>
+                                    <select class="form-control formState">
+                                        <option value="">Question No 3</option>
+                                        <option *ngFor="let simple of simpleQuestion" [value]="simple.id">{{simple.question}}</option>
+                                    </select>
+                                    <div class="clearfix"></div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label for="">Answer</label>
+                                    <input class="form-control formState" type="text" placeholder="Answer">
+                                    <div class="clearfix"></div>
+                                </div>
+                              </div>
+                            </div>
+                            <div class="clearfix"></div>
                         </div>
-
                         <div class="col-md-2 button-group pull-right">
                             <!-- <a class="button btn-gry buttonEdit"href="javascript:void()">Edit</a> -->
                             <button class="button btn-blue buttonEdit pull-right" type="submit">Save</button>
