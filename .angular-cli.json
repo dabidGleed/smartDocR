@@ -25,6 +25,7 @@
         "assets/date-time-picker/css/bootstrap-datepicker.css",
         "../node_modules/primeng/resources/themes/omega/theme.css",
         "../node_modules/primeng/resources/primeng.min.css",
+        "../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css",
         "assets/new/css/reset.css",
         "assets/new/css/style.css"
       ],

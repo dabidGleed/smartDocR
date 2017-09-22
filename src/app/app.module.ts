@@ -6,6 +6,9 @@ import { Ng2DragDropModule } from 'ng2-drag-drop';
 
 import { HotkeyModule } from 'angular2-hotkeys';
 import {AccordionModule} from "ngx-accordion";
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { TextMaskModule } from 'angular2-text-mask';
+
 
 // core module
 import { CoreModule } from './core/core.module';
@@ -38,11 +41,13 @@ import { ModuleIndexComponent } from './module-index/module-index.component';
 import { OperatorComponent } from './operator/operator.component';
 import { PermissionComponent } from './permission/permission.component';
 import { ClientComponent } from './client/client.component';
-// import { AddClientComponent } from './add-client/add-client.component';
+import { AddClientComponent } from './add-client/add-client.component';
+import { ClientSetupComponent } from './client-setup/client-setup.component';
 import { ProcessComponent } from './process/process.component';
 import { NavLeftComponent } from './nav-left/nav-left.component';
 import { NavLeftProcessComponent } from './nav-left-process/nav-left-process.component';
 import { HeaderNewComponent } from './header-new/header-new.component';
+import { ProvistionComponent } from './provistion/provistion.component';
 
 import { ClientService } from './client/client.service';
 
@@ -53,15 +58,15 @@ import { ClientService } from './client/client.service';
   imports: [
     BrowserModule, BrowserAnimationsModule, ReactiveFormsModule, FormsModule,
     routing, CoreModule, SharedModule, ClientDocumentsMappingModule,
-    HotkeyModule.forRoot(), LoadingAnimateModule.forRoot(), Ng2DragDropModule.forRoot(),AccordionModule
+    HotkeyModule.forRoot(), LoadingAnimateModule.forRoot(), Ng2DragDropModule.forRoot(),AccordionModule,
+    BsDatepickerModule.forRoot(),TextMaskModule
   ],
 
   declarations: [AppComponent,
     HomeComponent, BatchManagmentAuditComponent, AuditActionBarComponent,
-    BatchManagmentComponent, UserLeftNavComponent, UserActionBarComponent, FirstPageComponent, WorkFlowComponent, EditDetailsComponent, CompanyIndexComponent, ModuleIndexComponent, OperatorComponent, PermissionComponent, ClientComponent, ProcessComponent, NavLeftComponent, NavLeftProcessComponent, HeaderNewComponent
+    BatchManagmentComponent, UserLeftNavComponent, UserActionBarComponent, FirstPageComponent, WorkFlowComponent, EditDetailsComponent, CompanyIndexComponent, ModuleIndexComponent, OperatorComponent, PermissionComponent, ClientComponent, AddClientComponent,ClientSetupComponent,ProcessComponent, NavLeftComponent, NavLeftProcessComponent, HeaderNewComponent, ProvistionComponent
   ],
   bootstrap: [AppComponent],
   providers: [AppConfigService, LoadingAnimateService,ClientService]
 })
 export class AppModule { }
-

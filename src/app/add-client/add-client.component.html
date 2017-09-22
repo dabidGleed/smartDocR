@@ -1,128 +1,292 @@
-<header class="container-fluid">
-    <div class="pull-left left-head">
-        <!-- <select class="" name="">
-              <option value=""></option>
-            </select> -->
-        <h1>SmartDocR Logo</h1>
-
-    </div>
-    <div class="pull-right right-head">
-        <ul class="pull-right">
-            <li>John Gleer</li>
-            <li>Sep 23<sup>rd</sup></li>
-            <!-- <div class="clearfix"></div> -->
-        </ul>
-        <div class="clearfix"></div>
-    </div>
-    <div class="clearfix"></div>
-</header>
-<section class="middle-content container-fluid" style="background-image: url('assets/new/images/background.jpg');">
-    <div class="customTop">
-        <div class="col-md-2">
-            <div class="nav-left">
-                <ul>
-                    <li><a class="" href="#">Client Setup</a></li>
-                    <li><a href="#" class="active">Add New Client </a></li>
-                    <div class="clearfix"></div>
-                </ul>
-            </div>
-        </div>
-        <div class="col-md-9 col-md-offset-1">
-            <div class="contentRight mid-right">
-                <div class="companyDetails">
-                    <h4 class="heading edit">Company Details</h4>
-                    <div class="row companyDetails">
-                        <div class="col-md-6 form-group">
-                            <div class="">
-                                <label>Name</label>
-                                <input class="form-control form" type="text">
-                                <div class="clearfix"></div>
+<div class="col-md-9 col-md-offset-1">
+    <div class="contentRight mid-right">
+        <form #contactForm="ngForm" (ngSubmit)=' contactForm.valid && (rowData.length > 0) &&  submitProcess(contactForm); ' novalidate>
+            <div class="companyDetails">
+                <h4 class="heading edit">Company Details</h4>
+                <div class="row companyDetails">
+                    <div class="col-md-6 form-group">
+                        <div class="">
+                            <label>Name</label>
+                            <input class="form-control form" type="text" name="companyName" [(ngModel)]="company.companyName" #companyName="ngModel" required>
+                            <div *ngIf="companyName.errors && (companyName.dirty || companyName.touched || contactForm.submitted)  " class="error">
+                                <div [hidden]="!companyName.errors.required">
+                                    Company Name is required!
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>State</label>
+                        <!--<input class="form-control form" type="text" name="companyState" [(ngModel)]="company.companyState" #companyState="ngModel" required>-->
+                        <select class="form-control formState" name="companyState" [(ngModel)]="company.companyState" #companyState="ngModel" required>
+                            <option value="">Select</option>
+                            <option *ngFor="let category of Categories" [value]="category.id">{{category.name}}</option>
+                        </select>
+                        <div *ngIf="companyState.errors && (companyState.dirty || companyState.touched || contactForm.submitted)  " class="error">
+                            <div [hidden]="!companyState.errors.required">
+                                State is required!
                             </div>
                         </div>
-                        <div class="col-md-6 form-group">
-                            <label>State</label>
-                            <input class="form-control form" type="text">
-                            <div class="clearfix"></div>
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Adress</label>
+                        <textarea class="form-control formTextArea companyText" cols="50" name="companyAddress" [(ngModel)]="company.companyAddress" #companyAddress="ngModel" required></textarea>
+                        <div *ngIf="companyAddress.errors && (companyAddress.dirty || companyAddress.touched || contactForm.submitted)  " class="error">
+                            <div [hidden]="!companyAddress.errors.required">
+                                Address is required!
+                            </div>
                         </div>
-                        <div class="col-md-6 form-group">
-                            <label>Adress</label>
-                            <input class="form-control form" type="text">
-                            <div class="clearfix"></div>
-                        </div>
-                        <div class="col-md-6 form-group">
+                        <div class="clearfix"></div>
+                    </div>
+                    <div class="col-md-6 form-group cityPosition">
+                        <div class="cityForm">
                             <label class="formLabel">City</label>
-                            <input class="form-control formSmall" type="text">
-                            <label class="labelSmall">Zip</label>
-                            <input class="form-control formSmall" type="text">
+                            <input class="form-control formSmall" type="text" name="companyCity" [(ngModel)]="company.companyCity" #companyCity="ngModel" required>
                             <div class="clearfix"></div>
+                            <div *ngIf="companyCity.errors && (companyCity.dirty || companyCity.touched || contactForm.submitted)  " class="error errorRight">
+                                <div [hidden]="!companyCity.errors.required">
+                                    City is required!
+                                </div>
+                            </div>
+                        </div>
+                        <div class="cityForm" style="width: 40%">
+                            <label class="labelSmall">Zip</label>
+                            <input class="form-control formSmall" type="text" name="companyZipCode" [(ngModel)]="company.companyZipCode" #companyZipCode="ngModel" required>
+                            <div class="clearfix"></div>
+                            <div *ngIf="companyZipCode.errors && (companyZipCode.dirty || companyZipCode.touched || contactForm.submitted)  " class="error errorRight">
+                                <div [hidden]="!companyZipCode.errors.required">
+                                    Zipcode is required!
+                                </div>
+                            </div>
                         </div>
                         <div class="clearfix"></div>
                     </div>
+                    <div class="clearfix"></div>
                 </div>
-                <div class="companyDetails">
-                    <h4 class="heading edit">Contact Details</h4>
-                    <div class="row companyDetails">
-                        <div class="col-md-6 form-group">
-                            <div class="">
-                                <label>First Name</label>
-                                <input class="form-control form" type="text">
-                                <div class="clearfix"></div>
+            </div>
+            <div class="companyDetails">
+                <h4 class="heading edit">Contact Details</h4>
+                <div class="row companyDetails">
+                     <form #addcontactForm="ngForm" (ngSubmit)=' addcontactForm.valid &&  addRow(addcontactForm); ' novalidate>
+                    <div class="col-md-6 form-group">
+                        <div class="">
+                            <label>First Name</label>
+                            <input class="form-control form" type="text" name="firstName" [(ngModel)]="contactDetails.firstName" #firstName="ngModel" required>
+                            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || addcontactForm.submitted)  "class="error"  >
+                            <div [hidden]="!firstName.errors.required">
+                              First Name is required!
                             </div>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <div class="">
-                                <label>Last Name</label>
-                                <input class="form-control form" type="text">
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <div class="">
-                                <label>Phone Number</label>
-                                <input class="form-control form" type="text">
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <div class="">
-                                <label>Email ID</label>
-                                <input class="form-control form" type="text">
-                                <div class="clearfix"></div>
-                            </div>
-                        </div>
-                        <div class="col-md-6 pull-right">
-                            <p class="text-right"><a class="clickAdd" href="#">+</a>Click to add contact name</p>
+                          </div>
+                            <div class="clearfix"></div>
                         </div>
                     </div>
-                </div>
-                <div class="companyDetails">
-                    <h4 class="heading edit">Pricing Terms</h4>
-                    <div class="row companyDetails">
-                        <div class="col-md-6 form-group">
-                            <div class="">
-                                <label>Contract Date</label>
-                                <input class="form-control form" type="text">
-                                <div class="clearfix"></div>
+                    <div class="col-md-6 form-group">
+                        <div class="">
+                            <label>Last Name</label>
+                            <input class="form-control form" type="text" name="lastName" [(ngModel)]="contactDetails.lastName" #lastName="ngModel" required>
+                            <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || addcontactForm.submitted)  "class="error"  >
+                            <div [hidden]="!lastName.errors.required">
+                              Last Name is required!
                             </div>
-                        </div>
-                        <div class="col-md-6 form-group">
-                            <div class="">
-                                <label>Products Selected</label>
-                                <input class="form-control form" type="text">
-                                <div class="clearfix"></div>
-                            </div>
+                          </div>
+                            <div class="clearfix"></div>
                         </div>
                     </div>
+                    <div class="col-md-6 form-group">
+                        <div class="">
+                            <label>Phone Number</label>
+                            <!-- <input class="form-control form" type="number" name="phoneNumber" [(ngModel)]="contactDetails.phoneNumber" #phoneNumber="ngModel" required> -->
+                            <input class="form-control form" type="text" placeholder="+1 (123) 456-7890" [textMask]="{mask: mask}" name="phoneNumber" [(ngModel)]="contactDetails.phoneNumber" #phoneNumber="ngModel" required/>
+                           <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched || addcontactForm.submitted)  "class="error"  >
+                            <div [hidden]="!phoneNumber.errors.required">
+                              Phone Number is required!
+                            </div>
+                          </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <div class="">
+                            <label>Email ID</label>
+                            <input class="form-control form" type="email" name="email" [(ngModel)]="contactDetails.email" #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                            <div *ngIf="email.errors && (email.dirty || email.touched || addcontactForm.submitted)  "class="error">
+                            <div [hidden]="!email.errors.required">
+                              Email is required!
+                            </div>
+                             <div  *ngIf="email.errors && email.errors.pattern">
+                                  Email is invalid!
+                              </div>
+                          </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 pull-right">
+                        <p class="text-right"><button class="clickAdd" type="submit"  >+</button>Click to add contact name</p>
+                    </div>
+                    </form>
                 </div>
-                <div class="row subButton">
-                    <div class="button-group pull-right">
-                        <a class="button btn-gry buttonEdit" href="#">Edit</a>
-                        <a class="button btn-blue buttonEdit" href="#">Save</a>
+             <span class="error errorContact" [hidden]="!contactForm.submitted ">
+               <label class="errorLabel" for="" *ngIf="(rowData.length == 0)">Add atleast one Contact Details </label>
+             </span>
+                <span *ngFor='let row of rowData ; let i = index'>
+            <div class="row companyDetails">
+
+                <div class="col-md-6 form-group">
+                    <div class="">
+                        <label>First Name </label>
+                        <input class="form-control form" type="text" name="firstName{{i}}" [(ngModel)]="row.firstName" #firstName="ngModel" required>
+                         <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || contactForm.submitted)  "class="error"  >
+                            <div [hidden]="!firstName.errors.required">
+                              First Name is required!
+                            </div>
+                          </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="">
+                        <label>Last Name</label>
+                       <input class="form-control form" type="text"  name="lastName{{i}}" [(ngModel)]="row.lastName"  #lastName="ngModel" required >
+                       <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || contactForm.submitted)  "  class="error">
+                            <div [hidden]="!lastName.errors.required">
+                             Last Name is required!
+                            </div>
+                          </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="">
+                        <label>Phone Number</label>
+                        <input class="form-control form" type="text" placeholder="+1 (123) 456-7890" [textMask]="{mask: mask}" name="phoneNumber" [(ngModel)]="contactDetails.phoneNumber" #phoneNumber="ngModel" required/>
+                       <!-- <input class="form-control form" type="text" placeholder="+1 (123) 456-7890" [textMask]="{mask: mask}"  name="phoneNumber{{i}}"   [(ngModel)]="row.phoneNumber" #phoneNumber="ngModel" required > -->
+                       <!-- <input type="text" placeholder="+1 (123) 456-7890" [textMask]="{mask: mask}"/> -->
+                       <div *ngIf="phoneNumber.errors && (phoneNumber.dirty || phoneNumber.touched || contactForm.submitted)  " class="error" >
+                            <div [hidden]="!phoneNumber.errors.required">
+                              Phone Number is required!
+                            </div>
+                          </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 form-group">
+                    <div class="">
+                        <label>Email ID</label>
+                         <input class="form-control form" type="email"  name="email{{i}}" [(ngModel)]="row.email"  #email="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required >
+                         <div *ngIf="email.errors && (email.dirty || email.touched || contactForm.submitted)  "  class="error">
+                            <div [hidden]="!email.errors.required">
+                              Email is required!
+                            </div>
+                            <div  *ngIf="email.errors && email.errors.pattern">
+                                            Email is invalid!
+                                        </div>
+                          </div>
+                        <div class="clearfix"></div>
+                    </div>
+                </div>
+                <div class="col-md-6 pull-right">
+
+                    <p class="text-right"  ><a class="clickAdd" (click)='removeRow(i)'>-</a>Remove</p>
+                </div>
+            </div>
+              </span>
+            </div>
+
+            <div class="companyDetails">
+                <h4 class="heading edit">Branch Details</h4>
+                <div class="row companyDetails">
+                    <div class="col-md-6 form-group">
+                        <div class="">
+                            <label>Branch Number</label>
+                            <input class="form-control form" type="number" name="companyBranchNumber" [(ngModel)]="company.companyBranchNumber" #companyBranchNumber="ngModel" required>
+                            <div *ngIf="companyBranchNumber.errors && (companyBranchNumber.dirty || companyBranchNumber.touched || contactForm.submitted)  " class="error">
+                                <div [hidden]="!companyBranchNumber.errors.required">
+                                    Branch Number is required!
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <div class="">
+                            <label>Branch Name</label>
+                            <input class="form-control form" type="text" name="companyBranchName" [(ngModel)]="company.companyBranchName" #companyBranchName="ngModel" required>
+                            <div *ngIf="companyBranchName.errors && (companyBranchName.dirty || companyBranchName.touched || contactForm.submitted)  " class="error">
+                                <div [hidden]="!companyBranchName.errors.required">
+                                    Branch Name is required!
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label>Status</label>
+                        <label class="switch">
+                          <input type="checkbox" name="status"  [(ngModel)]="contactDetails.status">
+                          <span class="slider round"></span>
+                        </label>
+                        <!-- <span class="toggleActive">Active</span> -->
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="companyDetails">
+                <h4 class="heading edit">Pricing Terms</h4>
+                <div class="row companyDetails">
+                    <div class="col-md-6 form-group">
+                        <div class="">
+                            <label>Contract Date</label>
+                            <!-- <input class="form-control form" type="date" name="companyContractDate" [(ngModel)]="company.companyContractDate" #companyContractDate="ngModel" required> -->
+                            <input class="form-control form" type="text"
+                            [minDate]="minDate"
+                            [maxDate]="maxDate"
+                            name="companyContractDate" [(ngModel)]="company.companyContractDate" #companyContractDate="ngModel"
+                            required bsDatepicker>
+                            <div *ngIf="companyContractDate.errors && (companyContractDate.dirty || companyContractDate.touched || contactForm.submitted)  " class="error">
+                                <div [hidden]="!companyContractDate.errors.required">
+                                    Contract Date is required!
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <div class="">
+                            <label>Products Selected</label>
+                            <!--<input class="form-control form" type="text" name="companyProductSelected" [(ngModel)]="company.companyProductSelected" #companyProductSelected="ngModel" required>-->
+                            <select class="form-control formState" name="companyProductSelected" [(ngModel)]="company.companyProductSelected" #companyProductSelected="ngModel" required>
+                            <option value="">Select</option>
+                            <option value="all">All1</option>
+                            <option value="all">All2</option>
+                            <!--<option *ngFor="let category of Categories">{{category.name}}</option>-->
+                        </select>
+                            <div *ngIf="companyProductSelected.errors && (companyProductSelected.dirty || companyProductSelected.touched || contactForm.submitted)  " class="error">
+                                <div [hidden]="!companyProductSelected.errors.required">
+                                    Product Selected is required!
+                                </div>
+                            </div>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 form-group file">
+                        <label>Upload Contract</label>
+                         <label class="labelUpload" for="file-input">Upload Contract</label>
+                        <input type="file" id="file-input">
                         <div class="clearfix"></div>
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="clearfix"></div>
+            <div class="row subButton">
+                <div class="button-group pull-right">
+                    <button class="button btn-gry buttonEdit">Edit</button>
+                    <button *ngIf="flag" class="button btn-blue buttonEdit" type="submit">Save</button>
+                    <button *ngIf="!flag" class="button btn-blue buttonEdit" type="submit">Update</button>
+                    <div class="clearfix"></div>
+                </div>
+            </div>
+        </form>
     </div>
-</section>
+</div>

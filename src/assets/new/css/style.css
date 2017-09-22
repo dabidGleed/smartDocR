@@ -85,10 +85,11 @@ header .right-head ul li:last-child {
 .button {
     display: inline-block;
     padding: 6px 15px;
-    background: red;
+    background: #FF0000;
     color: #fff;
     font-size: 14px;
     margin: 3px 0;
+    border: none;
 }
 
 .logo-img {
@@ -139,7 +140,8 @@ header .right-head ul li:last-child {
 }
 
 .companyDetails .formGroup {
-    margin-bottom: 5px;
+    margin-bottom: 15px;
+    position: relative;
 }
 
 
@@ -168,10 +170,6 @@ input[type="checkbox"] {
 .nav-left ul li a:hover,
 .nav-left ul li a.active {
     background: #51c8ea;
-}
-
-.contentRight {
-    background: #fff;
 }
 
 .defaultNav {
@@ -249,6 +247,8 @@ input[type="checkbox"] {
     -moz-box-shadow: 5px -1px 5px -3px rgba(128, 121, 128, 1);
     box-shadow: 5px -1px 5px -3px rgba(128, 121, 128, 1);
     border-radius: 5px;
+    padding-top: 10px;
+    padding-bottom: 20px;
 }
 
 
@@ -260,7 +260,8 @@ input[type="checkbox"] {
 }
 
 .companyDetails {
-    margin-top: 30px
+    margin-top: 20px;
+    position:relative;
 }
 
 
@@ -376,7 +377,7 @@ input:checked+.slider:before {
 
 input[type="file"] {
     float: left;
-    width: 100%;
+    /*width: 100%;*/
 }
 
 .content {
@@ -400,8 +401,8 @@ input[type="file"] {
 }
 
 .companyDetails .form-small {
-    float: left;
-    width: 34%;
+    /*float: left;*/
+    width: 100%;
 }
 
 .companyDetails .formTextArea {
@@ -600,10 +601,6 @@ td {
 }
 
 .error {
-    /*position: absolute;
-    right: 16px;
-    top: 0;
-    /*bottom: -20px;*/
     position: absolute;
     bottom: -7px;
     right: 22px;
@@ -612,10 +609,38 @@ td {
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 12px;
-    color: red;
+    color: #FF0000;
     /*z-index: 999;*/
 }
+.error.errorRight{right: 5px !important;}
+.companyDetails .errorLabel{width: auto;line-height: 20px;}
+.error.errorContact{bottom: 66px;right: 50%;margin-right: -163px;}
 
 input[type="number"] {
     -moz-appearance: textfield;
 }
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0; /* Removes leftover margin */
+}
+.processPosition{
+  position: relative;
+  float: left;
+  width: 34%;
+
+}
+.form-control{
+  padding: 6px;
+  display: inline-block;
+}
+
+.form-control.formSelect{width: 32%;}
+.file { position: relative; height: 30px; }
+.file > input[type="file"] { position: absoulte; opacity: 0; top: 0; left: 0; right: 0; bottom: 0 }
+.file .labelUpload { position: absolute; top: 0; right: 0; bottom: 0; background-color: #666; color: #fff; line-height: 30px; text-align: center; cursor: pointer; }
+.btnActive{
+    background: #51c8ea;
+}
+
+bs-datepicker-container{top:130px !important;}

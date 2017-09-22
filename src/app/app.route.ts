@@ -12,19 +12,31 @@ import { OperatorComponent } from './operator/operator.component';
 import { PermissionComponent } from './permission/permission.component';
 import { ClientComponent } from './client/client.component';
 import { ProcessComponent } from './process/process.component';
-// import { AddClientComponent } from './add-client/add-client.component';
+import { AddClientComponent } from './add-client/add-client.component';
+import { ClientSetupComponent } from './client-setup/client-setup.component';
+import { ProvistionComponent } from './provistion/provistion.component';
 
 export const appRoutes: Routes = [
   { path: '', component: HomeComponent },
-  { path:'firstPage', component: FirstPageComponent }, 
+  { path:'firstPage', component: FirstPageComponent },
   { path:'editDetails', component:EditDetailsComponent },
   { path:'moduleIndex', component:ModuleIndexComponent },
   { path:'company', component:CompanyIndexComponent },
   { path:'permission', component:PermissionComponent },
   { path:'process', component:ProcessComponent },
-  { path:'client', component:ClientComponent },
+  { path:'provistion', component:ProvistionComponent },
+  { path:'client', component:ClientComponent ,
+  children: [
+    { path: '', redirectTo: 'addClient', pathMatch: 'full' },
+    { path:'addClient', component: AddClientComponent },
+    { path:'editClient/:id', component: AddClientComponent },
+    { path:'setup', component: ClientSetupComponent }
+  ]
+  },
   { path:'workflow', component: WorkFlowComponent },
   { path:'operator', component: OperatorComponent },
+
+
   { path: 'batchManagmentAudit', component: BatchManagmentAuditComponent },
   { path: 'batchManagment', component: BatchManagmentComponent },
   { path: 'manualClassification', loadChildren: './manual-classification/manual-classification.module#ManualClassificationModule' },
@@ -36,7 +48,6 @@ export const appRoutes: Routes = [
   },
   { path: 'classification', loadChildren: './classification/classification.module#ClassificationModule' },
   { path: 'extractionConfig', loadChildren: './extraction-config/extraction-config.module#ExtractionConfigModule' },
-  // { path: 'addClient', component: AddClientComponent }
 
 ];
 

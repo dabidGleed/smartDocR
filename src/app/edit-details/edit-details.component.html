@@ -11,8 +11,9 @@
                     <div class="row companyDetails">
                         <div class="col-md-4 formGroup">
                             <label>Search By Role</label>
-                            <select class="form-control formInput">
-                            <option value="all"></option>
+                         <select class="form-control formInput" name="searchRole" [(ngModel)]="editRole.searchRole" #searchRole="ngModel" required>
+                         <option value="">Select</option>
+                         <option *ngFor = "let role of roles">{{role.name}}</option>
                          </select>
                             <div class="clearfix"></div>
                         </div>
@@ -33,7 +34,7 @@
                     <div class="clearfix"></div>
                 </div>
                 <div class="tableDetails">
-                    <table class="table table-bordered DetailsTable" style="width: 100%">
+                    <table class="table table-bordered DetailsTable table-hover" style="width: 100%">
                         <thead>
                             <tr>
                                 <th style="width: 5%">No.</th>
@@ -44,12 +45,12 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td style="width: 5%">1</td>
-                                <td style="width: 25%">Williams</td>
-                                <td style="width: 30%">james</td>
-                                <td style="width: 20%">123456</td>
-                                <td style="width: 20%">employe</td>
+                            <tr *ngFor='let row of rowData ; let i = index' (click)="editUser(row)">
+                                <td style="width: 5%">{{i+1}}</td>
+                                <td style="width: 25%">{{row.firstName}}</td>
+                                <td style="width: 30%">{{row.lastName}}</td>
+                                <td style="width: 20%">{{row.emailId}}</td>
+                                <td style="width: 20%">{{row.role}}</td>
                             </tr>
                             <!--<tr>
                                 <td style="width: 100%"></td>
@@ -91,8 +92,12 @@
                     <div class="col-md-4">
                         <div class="formGroup">
                             <label>Status</label>
-                            <input class="form-control" type="text" name="status" [(ngModel)]="editDetails.status" #status="ngModel" required>
-                            <div *ngIf="status.errors && (status.dirty || status.touched || editDetailsForm.submitted)  " class="error" >
+                            <select class="form-control" name="status" [(ngModel)]="editDetails.status" #status="ngModel" required>
+                            <option value="">Select</option>
+                            <option value="active">Active</option>
+                            <option value="inactive">InActive</option>
+                            </select>
+                            <div *ngIf="status.errors && (status.dirty || status.touched || editDetailsForm.submitted)  " class="error errorRight" >
                                     <div [hidden]="!status.errors.required">
                                     Status is required!
                                     </div>
@@ -102,7 +107,7 @@
                         <div class="formGroup">
                             <label>Emp ID</label>
                             <input class="form-control" type="text"  name="employeeId" [(ngModel)]="editDetails.employeeId" #employeeId="ngModel" required>
-                            <div *ngIf="employeeId.errors && (employeeId.dirty || employeeId.touched || editDetailsForm.submitted)  " class="error" >
+                            <div *ngIf="employeeId.errors && (employeeId.dirty || employeeId.touched || editDetailsForm.submitted)  " class="error errorRight" >
                                     <div [hidden]="!employeeId.errors.required">
                                     Employee Id is required!
                                     </div>
@@ -112,7 +117,7 @@
                         <div class="formGroup">
                             <label>User ID</label>
                             <input class="form-control" type="text"  name="userId" [(ngModel)]="editDetails.userId" #userId="ngModel" required>
-                            <div *ngIf="userId.errors && (userId.dirty || userId.touched || editDetailsForm.submitted)  "class="error"  >
+                            <div *ngIf="userId.errors && (userId.dirty || userId.touched || editDetailsForm.submitted)  "class="error errorRight">
                                     <div [hidden]="!userId.errors.required">
                                     User Id is required!
                                     </div>
@@ -122,7 +127,7 @@
                         <div class="formGroup">
                             <label>First Name</label>
                             <input class="form-control" type="text"  name="firstName" [(ngModel)]="editDetails.firstName" #firstName="ngModel" required>
-                            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || editDetailsForm.submitted)  "  class="error">
+                            <div *ngIf="firstName.errors && (firstName.dirty || firstName.touched || editDetailsForm.submitted)  "  class="error errorRight">
                                     <div [hidden]="!firstName.errors.required">
                                     First Name is required!
                                     </div>
@@ -134,23 +139,26 @@
                     <div class="col-md-4">
                         <div class="formGroup">
                             <label>Email ID</label>
-                            <input class="form-control" type="email"  name="emailId" [(ngModel)]="editDetails.emailId" #emailId="ngModel" required>
-                            <div *ngIf="emailId.errors && (emailId.dirty || emailId.touched || editDetailsForm.submitted)  " class="error" >
+                            <input class="form-control" type="email"  name="emailId" [(ngModel)]="editDetails.emailId" #emailId="ngModel" pattern="^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$" required>
+                            <div *ngIf="emailId.errors && (emailId.dirty || emailId.touched || editDetailsForm.submitted)  " class="error errorRight" >
                                     <div [hidden]="!emailId.errors.required">
-                                    Email Id is required!
+                                    Email is required!
                                     </div>
+                                    <div  *ngIf="emailId.errors && emailId.errors.pattern">
+                                            Email is invalid!
+                                        </div>
                                 </div>
                             <div class="clearfix"></div>
                         </div>
                         <div class="formGroup">
                             <label>Office Location</label>
-                            <select class="form-control"  name="officeLocation" [(ngModel)]="editDetails.officeLocation" #officeLocation="ngModel" required> 
-                       <option selected value="">states</option>
+                            <select class="form-control"  name="officeLocation" [(ngModel)]="editDetails.officeLocation" #officeLocation="ngModel" required>
+                       <option value="">Select</option>
                        <option *ngFor = "let state of states">{{state.name}}</option>
                    </select>
-                   <div *ngIf="officeLocation.errors && (officeLocation.dirty || officeLocation.touched || editDetailsForm.submitted)  " class="error" >
+                   <div *ngIf="officeLocation.errors && (officeLocation.dirty || officeLocation.touched || editDetailsForm.submitted)  " class="error errorRight" >
                                     <div [hidden]="!officeLocation.errors.required">
-                                    Office Location is required!
+                                    Location is required!
                                     </div>
                                 </div>
 
@@ -159,7 +167,7 @@
                         <div class="formGroup">
                             <label>Last Name</label>
                             <input class="form-control" type="text" name="lastName" [(ngModel)]="editDetails.lastName" #lastName="ngModel" required>
-                             <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || editDetailsForm.submitted)  " class="error" >
+                             <div *ngIf="lastName.errors && (lastName.dirty || lastName.touched || editDetailsForm.submitted)  " class="error errorRight" >
                                     <div [hidden]="!lastName.errors.required">
                                     Last Name is required!
                                     </div>
